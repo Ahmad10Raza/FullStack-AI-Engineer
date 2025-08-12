@@ -343,7 +343,3 @@ RIGHT JOIN is essentially the mirror opposite of LEFT JOIN:
 </span></span><span data-darkreader-inline-color="" data-darkreader-inline-bgcolor=""></span></code></span></div></div></div></pre>
 
 This shows pairs of customers from the same country.
-
----
-
-Let me know if you want sample tables and data to try out these JOIN types or practical queries for them!
