@@ -205,3 +205,6 @@ cython_debug/
 marimo/_static/
 marimo/_lsp/
 __marimo__/
+Optimized_Machine_Learning/TensorRT/resnet50.onnx
+Optimized_Machine_Learning/TensorRT/resnet50_fp16.engine
+llama2-7b/LICENSE.txt
