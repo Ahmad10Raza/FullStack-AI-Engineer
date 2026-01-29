@@ -1,0 +1,1035 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8"/>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+    <title>Python Masterclass - Full Presentation</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800&family=Fira+Code:wght@400;500&display=swap" rel="stylesheet"/>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet"/>
+    <style type="text/tailwindcss">
+        @layer utilities {
+            .ppt-slide {
+                @apply relative w-[1280px] h-[720px] mx-auto box-border overflow-hidden
+            }
+        }
+    </style>
+    <style>
+        body {
+            font-family: "Montserrat", sans-serif;
+            background: #121212;
+            padding: 40px 0;
+        }
+        .python-blue { color: #3776AB }
+        .python-yellow { color: #FFD43B }
+        .bg-python-blue { background-color: #3776AB }
+        .bg-python-yellow { background-color: #FFD43B }
+        .code-font { font-family: "Fira Code", monospace }
+        .decorative-square {
+            position: absolute;
+            opacity: 0.05;
+            border-radius: 8px;
+            z-index: 0;
+            pointer-events: none;
+        }
+        .code-block {
+            background: #1e1e1e;
+            border: 1px solid #333;
+            border-radius: 8px;
+        }
+        .syntax-kw { color: #ff79c6; }
+        .syntax-str { color: #f1fa8c; }
+        .syntax-fn { color: #50fa7b; }
+        .syntax-cmt { color: #6272a4; font-style: italic; }
+        .syntax-num { color: #bd93f9; }
+
+        /* --- PRINT STYLES --- */
+        @media print {
+            body {
+                background: white;
+                padding: 0;
+                -webkit-print-color-adjust: exact;
+                print-color-adjust: exact;
+            }
+            .ppt-slide {
+                margin: 0;
+                width: 100%;
+                height: 100vh;
+                page-break-after: always;
+                break-after: always;
+                border: 1px solid #ddd; /* Adds a border for clear page separation in PDF */
+                box-shadow: none;
+            }
+            /* Remove UI elements that aren't needed in print if any exist */
+            .no-print { display: none; }
+        }
+    </style>
+    <style>.material-icons{width: 1em;}</style><style>.material-icons{direction: rtl;}</style></head>
+<body>
+
+    <!-- ==========================================
+         SLIDE 1: TITLE SLIDE
+    =========================================== -->
+    <div class="ppt-slide bg-gradient-to-br from-gray-900 via-gray-800 to-gray-900 flex items-center justify-center">
+        <div class="decorative-square bg-python-blue w-96 h-96 -top-20 -left-20 rotate-12"></div>
+        <div class="decorative-square bg-python-yellow w-72 h-72 bottom-20 right-40 -rotate-6"></div>
+        <div class="decorative-square bg-python-blue w-64 h-64 top-40 -right-16 rotate-3"></div>
+        <div class="decorative-square bg-python-yellow w-48 h-48 bottom-32 left-32 -rotate-12"></div>
+        
+        <div class="relative z-10 text-center px-20">
+            <div class="flex justify-center mb-8">
+                <div class="flex items-center space-x-2">
+                    <i class="material-icons text-8xl python-blue">code</i>
+                    <i class="material-icons text-8xl python-yellow">terminal</i>
+                </div>
+            </div>
+            
+            <h1 class="text-[68px] font-bold leading-tight text-white mb-6">
+                Comprehensive Python Tutorial
+            </h1>
+            
+            <div class="flex items-center justify-center mb-8">
+                <div class="w-24 h-1 bg-python-blue"></div>
+                <div class="w-8 h-1 bg-python-yellow mx-3"></div>
+                <div class="w-24 h-1 bg-python-blue"></div>
+            </div>
+            
+            <h2 class="text-2xl font-semibold text-gray-300 mb-12">
+                From Basics to Advanced Concepts with Examples
+            </h2>
+            
+            <div class="bg-gray-900 bg-opacity-50 border-l-4 border-python-blue rounded-lg p-6 max-w-4xl mx-auto text-left">
+                <code class="code-font text-xl text-gray-200">
+                    <span class="syntax-fn">print</span>(<span class="syntax-str">"Hello, World!"</span>)
+                </code>
+            </div>
+            
+            <div class="mt-16 flex justify-center space-x-12 text-gray-400">
+                <div class="flex items-center space-x-2">
+                    <i class="material-icons text-2xl python-blue">list</i>
+                    <span class="text-lg">37 Topics</span>
+                </div>
+                <div class="flex items-center space-x-2">
+                    <i class="material-icons text-2xl python-yellow">code</i>
+                    <span class="text-lg">Practical Examples</span>
+                </div>
+                <div class="flex items-center space-x-2">
+                    <i class="material-icons text-2xl python-blue">school</i>
+                    <span class="text-lg">Complete Coverage</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ==========================================
+         SLIDE 2: Python HOME
+    =========================================== -->
+    <div class="ppt-slide bg-gradient-to-br from-gray-900 via-gray-800 to-gray-900 flex flex-col relative">
+        <div class="decorative-square bg-python-blue w-96 h-96 -top-20 -left-20 rotate-12"></div>
+        <div class="decorative-square bg-python-yellow w-64 h-64 bottom-20 right-20 rotate-6"></div>
+
+        <!-- Header -->
+        <div class="relative z-10 flex justify-between items-center px-12 py-6 border-b border-gray-700/50">
+            <div class="flex items-center gap-3">
+                <div class="bg-python-blue p-2 rounded"><i class="material-icons text-white">code</i></div>
+                <span class="text-xl font-bold text-white tracking-wide">PYTHON MASTERCLASS</span>
+            </div>
+            <div class="text-gray-400 font-mono">01 / 37</div>
+        </div>
+
+        <!-- Body -->
+        <div class="relative z-10 flex-grow flex px-12 py-10 gap-8">
+            <div class="w-3/5 flex flex-col justify-center">
+                <span class="text-xs font-bold uppercase tracking-[0.2em] text-blue-400 mb-2">Introduction</span>
+                <h2 class="text-5xl font-extrabold text-white mb-6">Python HOME</h2>
+                <p class="text-gray-300 text-lg leading-relaxed mb-8">
+                    Python is an interpreted, high-level, general-purpose programming language. Its design philosophy emphasizes code readability with the use of significant indentation.
+                </p>
+                
+                <!-- Pro Tip -->
+                <div class="bg-gray-800 bg-opacity-50 border-l-4 border-python-yellow p-5 rounded-r-lg">
+                    <h4 class="text-sm font-bold text-yellow-400 uppercase mb-2 flex items-center gap-2"><i class="material-icons text-sm">lightbulb</i> Pro Tip</h4>
+                    <p class="text-gray-300 text-base">Python is dynamically typed and garbage-collected. It supports multiple programming paradigms, including structured, object-oriented and functional programming.</p>
+                </div>
+            </div>
+
+            <div class="w-2/5 flex items-center">
+                <div class="code-block w-full p-6">
+                    <div class="flex items-center gap-2 mb-4 border-b border-gray-700 pb-2">
+                        <div class="w-3 h-3 rounded-full bg-red-500"></div>
+                        <div class="w-3 h-3 rounded-full bg-yellow-500"></div>
+                        <div class="w-3 h-3 rounded-full bg-green-500"></div>
+                    </div>
+                    <pre class="code-font text-base leading-relaxed text-gray-200"><span class="syntax-cmt"># This is a comment</span>
+<span class="syntax-fn">print</span>(<span class="syntax-str">"Welcome to Python"</span>)</pre>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ==========================================
+         SLIDE 3: Python Intro
+    =========================================== -->
+    <div class="ppt-slide bg-gradient-to-br from-gray-900 via-gray-800 to-gray-900 flex flex-col relative">
+        <div class="decorative-square bg-python-blue w-80 h-80 bottom-10 -left-10 rotate-45"></div>
+        <div class="relative z-10 flex justify-between items-center px-12 py-6 border-b border-gray-700/50">
+            <div class="flex items-center gap-3"><div class="bg-python-blue p-2 rounded"><i class="material-icons text-white">code</i></div><span class="text-xl font-bold text-white">PYTHON MASTERCLASS</span></div>
+            <div class="text-gray-400 font-mono">02 / 37</div>
+        </div>
+        <div class="relative z-10 flex-grow flex px-12 py-10 gap-8">
+            <div class="w-3/5 flex flex-col justify-center">
+                <span class="text-xs font-bold uppercase tracking-[0.2em] text-blue-400 mb-2">Introduction</span>
+                <h2 class="text-5xl font-extrabold text-white mb-6">Python Intro</h2>
+                <p class="text-gray-300 text-lg mb-8">Python works on different platforms (Windows, Mac, Linux). It has a syntax that allows developers to write programs with fewer lines than other languages.</p>
+                <div class="bg-gray-800 bg-opacity-50 border-l-4 border-python-yellow p-5 rounded-r-lg"><h4 class="text-sm font-bold text-yellow-400 uppercase mb-2"><i class="material-icons text-sm">lightbulb</i> Pro Tip</h4><p class="text-gray-300 text-base">Python is interpreted, meaning code is executed line by line, making debugging easier.</p></div>
+            </div>
+            <div class="w-2/5 flex items-center"><div class="code-block w-full p-6"><div class="flex items-center gap-2 mb-4 border-b border-gray-700 pb-2"><div class="w-3 h-3 rounded-full bg-red-500"></div><div class="w-3 h-3 rounded-full bg-yellow-500"></div><div class="w-3 h-3 rounded-full bg-green-500"></div></div><pre class="code-font text-base leading-relaxed text-gray-200"><span class="syntax-cmt"># Python runs on an interpreter</span>
+<span class="syntax-kw">import</span> sys
+<span class="syntax-fn">print</span>(sys.version)</pre></div></div>
+        </div>
+    </div>
+
+    <!-- ==========================================
+         SLIDE 4: Python Get Started
+    =========================================== -->
+    <div class="ppt-slide bg-gradient-to-br from-gray-900 via-gray-800 to-gray-900 flex flex-col relative">
+        <div class="decorative-square bg-python-yellow w-64 h-64 top-20 right-20 -rotate-12"></div>
+        <div class="relative z-10 flex justify-between items-center px-12 py-6 border-b border-gray-700/50">
+            <div class="flex items-center gap-3"><div class="bg-python-blue p-2 rounded"><i class="material-icons text-white">code</i></div><span class="text-xl font-bold text-white">PYTHON MASTERCLASS</span></div>
+            <div class="text-gray-400 font-mono">03 / 37</div>
+        </div>
+        <div class="relative z-10 flex-grow flex px-12 py-10 gap-8">
+            <div class="w-3/5 flex flex-col justify-center">
+                <span class="text-xs font-bold uppercase tracking-[0.2em] text-blue-400 mb-2">Getting Started</span>
+                <h2 class="text-5xl font-extrabold text-white mb-6">Python Get Started</h2>
+                <p class="text-gray-300 text-lg mb-8">To start coding in Python, you need to install the Python interpreter on your computer from python.org.</p>
+                <div class="bg-gray-800 bg-opacity-50 border-l-4 border-python-yellow p-5 rounded-r-lg"><h4 class="text-sm font-bold text-yellow-400 uppercase mb-2"><i class="material-icons text-sm">lightbulb</i> Pro Tip</h4><p class="text-gray-300 text-base">Check your installation by running 'python --version' in your command line terminal.</p></div>
+            </div>
+            <div class="w-2/5 flex items-center"><div class="code-block w-full p-6"><div class="flex items-center gap-2 mb-4 border-b border-gray-700 pb-2"><div class="w-3 h-3 rounded-full bg-red-500"></div><div class="w-3 h-3 rounded-full bg-yellow-500"></div><div class="w-3 h-3 rounded-full bg-green-500"></div></div><pre class="code-font text-base leading-relaxed text-gray-200"><span class="syntax-cmt"># Terminal Command:</span>
+ $ python --version
+<span class="syntax-cmt"># Output: Python 3.11.4</span></pre></div></div>
+        </div>
+    </div>
+
+    <!-- ==========================================
+         SLIDE 5: Python Syntax
+    =========================================== -->
+    <div class="ppt-slide bg-gradient-to-br from-gray-900 via-gray-800 to-gray-900 flex flex-col relative">
+        <div class="decorative-square bg-python-blue w-96 h-96 -bottom-32 -right-32 rotate-6"></div>
+        <div class="relative z-10 flex justify-between items-center px-12 py-6 border-b border-gray-700/50">
+            <div class="flex items-center gap-3"><div class="bg-python-blue p-2 rounded"><i class="material-icons text-white">code</i></div><span class="text-xl font-bold text-white">PYTHON MASTERCLASS</span></div>
+            <div class="text-gray-400 font-mono">04 / 37</div>
+        </div>
+        <div class="relative z-10 flex-grow flex px-12 py-10 gap-8">
+            <div class="w-3/5 flex flex-col justify-center">
+                <span class="text-xs font-bold uppercase tracking-[0.2em] text-blue-400 mb-2">Syntax</span>
+                <h2 class="text-5xl font-extrabold text-white mb-6">Python Syntax</h2>
+                <p class="text-gray-300 text-lg mb-8">Python relies on indentation, using whitespace, to define scope in the code. Other programming languages often use curly-brackets.</p>
+                <div class="bg-gray-800 bg-opacity-50 border-l-4 border-python-yellow p-5 rounded-r-lg"><h4 class="text-sm font-bold text-yellow-400 uppercase mb-2"><i class="material-icons text-sm">lightbulb</i> Pro Tip</h4><p class="text-gray-300 text-base">Incorrect indentation will result in an IndentationError.</p></div>
+            </div>
+            <div class="w-2/5 flex items-center"><div class="code-block w-full p-6"><div class="flex items-center gap-2 mb-4 border-b border-gray-700 pb-2"><div class="w-3 h-3 rounded-full bg-red-500"></div><div class="w-3 h-3 rounded-full bg-yellow-500"></div><div class="w-3 h-3 rounded-full bg-green-500"></div></div><pre class="code-font text-base leading-relaxed text-gray-200"><span class="syntax-kw">if</span> <span class="num">5</span> > <span class="num">2</span>:
+    <span class="syntax-fn">print</span>(<span class="syntax-str">"Five is greater!"</span>)</pre></div></div>
+        </div>
+    </div>
+
+    <!-- ==========================================
+         SLIDE 6: Python Output
+    =========================================== -->
+    <div class="ppt-slide bg-gradient-to-br from-gray-900 via-gray-800 to-gray-900 flex flex-col relative">
+        <div class="decorative-square bg-python-yellow w-72 h-72 top-40 left-40 rotate-3"></div>
+        <div class="relative z-10 flex justify-between items-center px-12 py-6 border-b border-gray-700/50">
+            <div class="flex items-center gap-3"><div class="bg-python-blue p-2 rounded"><i class="material-icons text-white">code</i></div><span class="text-xl font-bold text-white">PYTHON MASTERCLASS</span></div>
+            <div class="text-gray-400 font-mono">05 / 37</div>
+        </div>
+        <div class="relative z-10 flex-grow flex px-12 py-10 gap-8">
+            <div class="w-3/5 flex flex-col justify-center">
+                <span class="text-xs font-bold uppercase tracking-[0.2em] text-blue-400 mb-2">Output</span>
+                <h2 class="text-5xl font-extrabold text-white mb-6">Python Output</h2>
+                <p class="text-gray-300 text-lg mb-8">The print() function outputs data to the standard output device (screen).</p>
+                <div class="bg-gray-800 bg-opacity-50 border-l-4 border-python-yellow p-5 rounded-r-lg"><h4 class="text-sm font-bold text-yellow-400 uppercase mb-2"><i class="material-icons text-sm">lightbulb</i> Pro Tip</h4><p class="text-gray-300 text-base">You can print multiple items by separating them with a comma.</p></div>
+            </div>
+            <div class="w-2/5 flex items-center"><div class="code-block w-full p-6"><div class="flex items-center gap-2 mb-4 border-b border-gray-700 pb-2"><div class="w-3 h-3 rounded-full bg-red-500"></div><div class="w-3 h-3 rounded-full bg-yellow-500"></div><div class="w-3 h-3 rounded-full bg-green-500"></div></div><pre class="code-font text-base leading-relaxed text-gray-200"><span class="syntax-fn">print</span>(<span class="syntax-str">"Hello"</span>, <span class="syntax-str">"World"</span>)</pre></div></div>
+        </div>
+    </div>
+
+    <!-- ==========================================
+         SLIDE 7: Python Comments
+    =========================================== -->
+    <div class="ppt-slide bg-gradient-to-br from-gray-900 via-gray-800 to-gray-900 flex flex-col relative">
+        <div class="decorative-square bg-python-blue w-64 h-64 -bottom-10 left-20 -rotate-12"></div>
+        <div class="relative z-10 flex justify-between items-center px-12 py-6 border-b border-gray-700/50">
+            <div class="flex items-center gap-3"><div class="bg-python-blue p-2 rounded"><i class="material-icons text-white">code</i></div><span class="text-xl font-bold text-white">PYTHON MASTERCLASS</span></div>
+            <div class="text-gray-400 font-mono">06 / 37</div>
+        </div>
+        <div class="relative z-10 flex-grow flex px-12 py-10 gap-8">
+            <div class="w-3/5 flex flex-col justify-center">
+                <span class="text-xs font-bold uppercase tracking-[0.2em] text-blue-400 mb-2">Comments</span>
+                <h2 class="text-5xl font-extrabold text-white mb-6">Python Comments</h2>
+                <p class="text-gray-300 text-lg mb-8">Comments can be used to explain Python code. Use # for single-line comments and triple quotes for multi-line.</p>
+                <div class="bg-gray-800 bg-opacity-50 border-l-4 border-python-yellow p-5 rounded-r-lg"><h4 class="text-sm font-bold text-yellow-400 uppercase mb-2"><i class="material-icons text-sm">lightbulb</i> Pro Tip</h4><p class="text-gray-300 text-base">Comments are ignored by the interpreter. Use them to document logic.</p></div>
+            </div>
+            <div class="w-2/5 flex items-center"><div class="code-block w-full p-6"><div class="flex items-center gap-2 mb-4 border-b border-gray-700 pb-2"><div class="w-3 h-3 rounded-full bg-red-500"></div><div class="w-3 h-3 rounded-full bg-yellow-500"></div><div class="w-3 h-3 rounded-full bg-green-500"></div></div><pre class="code-font text-base leading-relaxed text-gray-200"><span class="syntax-cmt"># This is a comment</span>
+<span class="syntax-cmt">"""Multi-line"""</span></pre></div></div>
+        </div>
+    </div>
+
+    <!-- ==========================================
+         SLIDE 8: Python Variables
+    =========================================== -->
+    <div class="ppt-slide bg-gradient-to-br from-gray-900 via-gray-800 to-gray-900 flex flex-col relative">
+        <div class="decorative-square bg-python-yellow w-80 h-80 -top-10 right-20 rotate-12"></div>
+        <div class="relative z-10 flex justify-between items-center px-12 py-6 border-b border-gray-700/50">
+            <div class="flex items-center gap-3"><div class="bg-python-blue p-2 rounded"><i class="material-icons text-white">code</i></div><span class="text-xl font-bold text-white">PYTHON MASTERCLASS</span></div>
+            <div class="text-gray-400 font-mono">07 / 37</div>
+        </div>
+        <div class="relative z-10 flex-grow flex px-12 py-10 gap-8">
+            <div class="w-3/5 flex flex-col justify-center">
+                <span class="text-xs font-bold uppercase tracking-[0.2em] text-blue-400 mb-2">Variables</span>
+                <h2 class="text-5xl font-extrabold text-white mb-6">Python Variables</h2>
+                <p class="text-gray-300 text-lg mb-8">Variables are containers for storing data values. Python has no command for declaring a variable.</p>
+                <div class="bg-gray-800 bg-opacity-50 border-l-4 border-python-yellow p-5 rounded-r-lg"><h4 class="text-sm font-bold text-yellow-400 uppercase mb-2"><i class="material-icons text-sm">lightbulb</i> Pro Tip</h4><p class="text-gray-300 text-base">Variable names are case-sensitive (age vs Age).</p></div>
+            </div>
+            <div class="w-2/5 flex items-center"><div class="code-block w-full p-6"><div class="flex items-center gap-2 mb-4 border-b border-gray-700 pb-2"><div class="w-3 h-3 rounded-full bg-red-500"></div><div class="w-3 h-3 rounded-full bg-yellow-500"></div><div class="w-3 h-3 rounded-full bg-green-500"></div></div><pre class="code-font text-base leading-relaxed text-gray-200">x = <span class="num">5</span>
+y = <span class="syntax-str">"John"</span>
+<span class="syntax-fn">print</span>(x)</pre></div></div>
+        </div>
+    </div>
+
+    <!-- ==========================================
+         SLIDE 9: Python Data Types
+    =========================================== -->
+    <div class="ppt-slide bg-gradient-to-br from-gray-900 via-gray-800 to-gray-900 flex flex-col relative">
+        <div class="decorative-square bg-python-blue w-72 h-72 bottom-40 right-20 -rotate-6"></div>
+        <div class="relative z-10 flex justify-between items-center px-12 py-6 border-b border-gray-700/50">
+            <div class="flex items-center gap-3"><div class="bg-python-blue p-2 rounded"><i class="material-icons text-white">code</i></div><span class="text-xl font-bold text-white">PYTHON MASTERCLASS</span></div>
+            <div class="text-gray-400 font-mono">08 / 37</div>
+        </div>
+        <div class="relative z-10 flex-grow flex px-12 py-10 gap-8">
+            <div class="w-3/5 flex flex-col justify-center">
+                <span class="text-xs font-bold uppercase tracking-[0.2em] text-blue-400 mb-2">Data Types</span>
+                <h2 class="text-5xl font-extrabold text-white mb-6">Python Data Types</h2>
+                <p class="text-gray-300 text-lg mb-8">Variables can store data of different types. Built-in types include str, int, float, complex, list, tuple, range, dict, set, bool, bytes.</p>
+                <div class="bg-gray-800 bg-opacity-50 border-l-4 border-python-yellow p-5 rounded-r-lg"><h4 class="text-sm font-bold text-yellow-400 uppercase mb-2"><i class="material-icons text-sm">lightbulb</i> Pro Tip</h4><p class="text-gray-300 text-base">Use type() to check the data type of any variable.</p></div>
+            </div>
+            <div class="w-2/5 flex items-center"><div class="code-block w-full p-6"><div class="flex items-center gap-2 mb-4 border-b border-gray-700 pb-2"><div class="w-3 h-3 rounded-full bg-red-500"></div><div class="w-3 h-3 rounded-full bg-yellow-500"></div><div class="w-3 h-3 rounded-full bg-green-500"></div></div><pre class="code-font text-base leading-relaxed text-gray-200">x = <span class="num">5</span>        <span class="syntax-cmt"># int</span>
+y = <span class="syntax-str">"Hello"</span>  <span class="syntax-cmt"># str</span>
+z = <span class="num">3.14</span>     <span class="syntax-cmt"># float</span></pre></div></div>
+        </div>
+    </div>
+
+    <!-- ==========================================
+         SLIDE 10: Python Numbers
+    =========================================== -->
+    <div class="ppt-slide bg-gradient-to-br from-gray-900 via-gray-800 to-gray-900 flex flex-col relative">
+        <div class="decorative-square bg-python-yellow w-96 h-96 top-20 -left-20 rotate-12"></div>
+        <div class="relative z-10 flex justify-between items-center px-12 py-6 border-b border-gray-700/50">
+            <div class="flex items-center gap-3"><div class="bg-python-blue p-2 rounded"><i class="material-icons text-white">code</i></div><span class="text-xl font-bold text-white">PYTHON MASTERCLASS</span></div>
+            <div class="text-gray-400 font-mono">09 / 37</div>
+        </div>
+        <div class="relative z-10 flex-grow flex px-12 py-10 gap-8">
+            <div class="w-3/5 flex flex-col justify-center">
+                <span class="text-xs font-bold uppercase tracking-[0.2em] text-blue-400 mb-2">Numbers</span>
+                <h2 class="text-5xl font-extrabold text-white mb-6">Python Numbers</h2>
+                <p class="text-gray-300 text-lg mb-8">There are three numeric types in Python: int (integer), float (floating point number), and complex (j).</p>
+                <div class="bg-gray-800 bg-opacity-50 border-l-4 border-python-yellow p-5 rounded-r-lg"><h4 class="text-sm font-bold text-yellow-400 uppercase mb-2"><i class="material-icons text-sm">lightbulb</i> Pro Tip</h4><p class="text-gray-300 text-base">Complex numbers are written with a 'j' as the imaginary part (e.g., 3+4j).</p></div>
+            </div>
+            <div class="w-2/5 flex items-center"><div class="code-block w-full p-6"><div class="flex items-center gap-2 mb-4 border-b border-gray-700 pb-2"><div class="w-3 h-3 rounded-full bg-red-500"></div><div class="w-3 h-3 rounded-full bg-yellow-500"></div><div class="w-3 h-3 rounded-full bg-green-500"></div></div><pre class="code-font text-base leading-relaxed text-gray-200">x = <span class="num">1</span>    <span class="syntax-cmt"># int</span>
+y = <span class="num">2.8</span>  <span class="syntax-cmt"># float</span>
+z = <span class="num">1j</span>   <span class="syntax-cmt"># complex</span></pre></div></div>
+        </div>
+    </div>
+
+    <!-- ==========================================
+         SLIDE 11: Python Casting
+    =========================================== -->
+    <div class="ppt-slide bg-gradient-to-br from-gray-900 via-gray-800 to-gray-900 flex flex-col relative">
+        <div class="decorative-square bg-python-blue w-64 h-64 bottom-20 right-40 rotate-3"></div>
+        <div class="relative z-10 flex justify-between items-center px-12 py-6 border-b border-gray-700/50">
+            <div class="flex items-center gap-3"><div class="bg-python-blue p-2 rounded"><i class="material-icons text-white">code</i></div><span class="text-xl font-bold text-white">PYTHON MASTERCLASS</span></div>
+            <div class="text-gray-400 font-mono">10 / 37</div>
+        </div>
+        <div class="relative z-10 flex-grow flex px-12 py-10 gap-8">
+            <div class="w-3/5 flex flex-col justify-center">
+                <span class="text-xs font-bold uppercase tracking-[0.2em] text-blue-400 mb-2">Casting</span>
+                <h2 class="text-5xl font-extrabold text-white mb-6">Python Casting</h2>
+                <p class="text-gray-300 text-lg mb-8">There may be times when you want to specify a type on to a variable using casting functions: int(), float(), str().</p>
+                <div class="bg-gray-800 bg-opacity-50 border-l-4 border-python-yellow p-5 rounded-r-lg"><h4 class="text-sm font-bold text-yellow-400 uppercase mb-2"><i class="material-icons text-sm">lightbulb</i> Pro Tip</h4><p class="text-gray-300 text-base">Converting a float to an int will truncate the decimal, not round it.</p></div>
+            </div>
+            <div class="w-2/5 flex items-center"><div class="code-block w-full p-6"><div class="flex items-center gap-2 mb-4 border-b border-gray-700 pb-2"><div class="w-3 h-3 rounded-full bg-red-500"></div><div class="w-3 h-3 rounded-full bg-yellow-500"></div><div class="w-3 h-3 rounded-full bg-green-500"></div></div><pre class="code-font text-base leading-relaxed text-gray-200">x = <span class="syntax-fn">int</span>(<span class="num">1.9</span>)   <span class="syntax-cmt"># x will be 1</span>
+y = <span class="syntax-fn">float</span>(<span class="num">1</span>)   <span class="syntax-cmt"># y will be 1.0</span></pre></div></div>
+        </div>
+    </div>
+
+    <!-- ==========================================
+         SLIDE 12: Python Strings
+    =========================================== -->
+    <div class="ppt-slide bg-gradient-to-br from-gray-900 via-gray-800 to-gray-900 flex flex-col relative">
+        <div class="decorative-square bg-python-yellow w-80 h-80 -bottom-20 -left-20 -rotate-12"></div>
+        <div class="relative z-10 flex justify-between items-center px-12 py-6 border-b border-gray-700/50">
+            <div class="flex items-center gap-3"><div class="bg-python-blue p-2 rounded"><i class="material-icons text-white">code</i></div><span class="text-xl font-bold text-white">PYTHON MASTERCLASS</span></div>
+            <div class="text-gray-400 font-mono">11 / 37</div>
+        </div>
+        <div class="relative z-10 flex-grow flex px-12 py-10 gap-8">
+            <div class="w-3/5 flex flex-col justify-center">
+                <span class="text-xs font-bold uppercase tracking-[0.2em] text-blue-400 mb-2">Strings</span>
+                <h2 class="text-5xl font-extrabold text-white mb-6">Python Strings</h2>
+                <p class="text-gray-300 text-lg mb-8">Strings in python are surrounded by either single quotation marks, or double quotation marks.</p>
+                <div class="bg-gray-800 bg-opacity-50 border-l-4 border-python-yellow p-5 rounded-r-lg"><h4 class="text-sm font-bold text-yellow-400 uppercase mb-2"><i class="material-icons text-sm">lightbulb</i> Pro Tip</h4><p class="text-gray-300 text-base">Strings are immutable. You cannot change a character in a string after it has been created.</p></div>
+            </div>
+            <div class="w-2/5 flex items-center"><div class="code-block w-full p-6"><div class="flex items-center gap-2 mb-4 border-b border-gray-700 pb-2"><div class="w-3 h-3 rounded-full bg-red-500"></div><div class="w-3 h-3 rounded-full bg-yellow-500"></div><div class="w-3 h-3 rounded-full bg-green-500"></div></div><pre class="code-font text-base leading-relaxed text-gray-200">a = <span class="syntax-str">"Hello"</span>
+<span class="syntax-fn">print</span>(a[<span class="num">1</span>]) <span class="syntax-cmt"># Output: e</span>
+<span class="syntax-fn">print</span>(a.<span class="syntax-fn">upper</span>()) <span class="syntax-cmt"># HELLO</span></pre></div></div>
+        </div>
+    </div>
+
+    <!-- ==========================================
+         SLIDE 13: Python Booleans
+    =========================================== -->
+    <div class="ppt-slide bg-gradient-to-br from-gray-900 via-gray-800 to-gray-900 flex flex-col relative">
+        <div class="decorative-square bg-python-blue w-96 h-96 top-40 -right-20 rotate-6"></div>
+        <div class="relative z-10 flex justify-between items-center px-12 py-6 border-b border-gray-700/50">
+            <div class="flex items-center gap-3"><div class="bg-python-blue p-2 rounded"><i class="material-icons text-white">code</i></div><span class="text-xl font-bold text-white">PYTHON MASTERCLASS</span></div>
+            <div class="text-gray-400 font-mono">12 / 37</div>
+        </div>
+        <div class="relative z-10 flex-grow flex px-12 py-10 gap-8">
+            <div class="w-3/5 flex flex-col justify-center">
+                <span class="text-xs font-bold uppercase tracking-[0.2em] text-blue-400 mb-2">Booleans</span>
+                <h2 class="text-5xl font-extrabold text-white mb-6">Python Booleans</h2>
+                <p class="text-gray-300 text-lg mb-8">In programming you often need to know if an expression is True or False. You can evaluate any expression in Python.</p>
+                <div class="bg-gray-800 bg-opacity-50 border-l-4 border-python-yellow p-5 rounded-r-lg"><h4 class="text-sm font-bold text-yellow-400 uppercase mb-2"><i class="material-icons text-sm">lightbulb</i> Pro Tip</h4><p class="text-gray-300 text-base">Almost any value is evaluated to True if it has some sort of content, except 0, empty lists, None, etc.</p></div>
+            </div>
+            <div class="w-2/5 flex items-center"><div class="code-block w-full p-6"><div class="flex items-center gap-2 mb-4 border-b border-gray-700 pb-2"><div class="w-3 h-3 rounded-full bg-red-500"></div><div class="w-3 h-3 rounded-full bg-yellow-500"></div><div class="w-3 h-3 rounded-full bg-green-500"></div></div><pre class="code-font text-base leading-relaxed text-gray-200"><span class="syntax-fn">print</span>(<span class="num">10</span> > <span class="num">9</span>)   <span class="syntax-cmt"># True</span>
+<span class="syntax-fn">print</span>(<span class="num">10</span> == <span class="num">9</span>)  <span class="syntax-cmt"># False</span>
+<span class="syntax-fn">print</span>(<span class="syntax-kw">bool</span>(<span class="syntax-str">"abc"</span>))</pre></div></div>
+        </div>
+    </div>
+
+    <!-- ==========================================
+         SLIDE 14: Python Operators
+    =========================================== -->
+    <div class="ppt-slide bg-gradient-to-br from-gray-900 via-gray-800 to-gray-900 flex flex-col relative">
+        <div class="decorative-square bg-python-yellow w-72 h-72 bottom-10 right-10 -rotate-3"></div>
+        <div class="relative z-10 flex justify-between items-center px-12 py-6 border-b border-gray-700/50">
+            <div class="flex items-center gap-3"><div class="bg-python-blue p-2 rounded"><i class="material-icons text-white">code</i></div><span class="text-xl font-bold text-white">PYTHON MASTERCLASS</span></div>
+            <div class="text-gray-400 font-mono">13 / 37</div>
+        </div>
+        <div class="relative z-10 flex-grow flex px-12 py-10 gap-8">
+            <div class="w-3/5 flex flex-col justify-center">
+                <span class="text-xs font-bold uppercase tracking-[0.2em] text-blue-400 mb-2">Operators</span>
+                <h2 class="text-5xl font-extrabold text-white mb-6">Python Operators</h2>
+                <p class="text-gray-300 text-lg mb-8">Operators are used to perform operations on variables and values. Types: Arithmetic, Assignment, Comparison, Logical, Identity, Membership, Bitwise.</p>
+                <div class="bg-gray-800 bg-opacity-50 border-l-4 border-python-yellow p-5 rounded-r-lg"><h4 class="text-sm font-bold text-yellow-400 uppercase mb-2"><i class="material-icons text-sm">lightbulb</i> Pro Tip</h4><p class="text-gray-300 text-base">Use 'is' for identity checks (checking if two objects are the same object in memory), not for value equality.</p></div>
+            </div>
+            <div class="w-2/5 flex items-center"><div class="code-block w-full p-6"><div class="flex items-center gap-2 mb-4 border-b border-gray-700 pb-2"><div class="w-3 h-3 rounded-full bg-red-500"></div><div class="w-3 h-3 rounded-full bg-yellow-500"></div><div class="w-3 h-3 rounded-full bg-green-500"></div></div><pre class="code-font text-base leading-relaxed text-gray-200">x = <span class="num">5</span>
+x += <span class="num">3</span>  <span class="syntax-cmt"># Assignment</span>
+<span class="syntax-fn">print</span>(x > <span class="num">3</span> <span class="syntax-kw">and</span> x < <span class="num">10</span>)</pre></div></div>
+        </div>
+    </div>
+
+    <!-- ==========================================
+         SLIDE 15: Python Lists
+    =========================================== -->
+    <div class="ppt-slide bg-gradient-to-br from-gray-900 via-gray-800 to-gray-900 flex flex-col relative">
+        <div class="decorative-square bg-python-blue w-80 h-80 top-20 left-20 rotate-12"></div>
+        <div class="relative z-10 flex justify-between items-center px-12 py-6 border-b border-gray-700/50">
+            <div class="flex items-center gap-3"><div class="bg-python-blue p-2 rounded"><i class="material-icons text-white">code</i></div><span class="text-xl font-bold text-white">PYTHON MASTERCLASS</span></div>
+            <div class="text-gray-400 font-mono">14 / 37</div>
+        </div>
+        <div class="relative z-10 flex-grow flex px-12 py-10 gap-8">
+            <div class="w-3/5 flex flex-col justify-center">
+                <span class="text-xs font-bold uppercase tracking-[0.2em] text-blue-400 mb-2">Collections</span>
+                <h2 class="text-5xl font-extrabold text-white mb-6">Python Lists</h2>
+                <p class="text-gray-300 text-lg mb-8">Lists are used to store multiple items in a single variable. They are ordered, changeable, and allow duplicate values.</p>
+                <div class="bg-gray-800 bg-opacity-50 border-l-4 border-python-yellow p-5 rounded-r-lg"><h4 class="text-sm font-bold text-yellow-400 uppercase mb-2"><i class="material-icons text-sm">lightbulb</i> Pro Tip</h4><p class="text-gray-300 text-base">Lists are created with square brackets []. Use append() to add items.</p></div>
+            </div>
+            <div class="w-2/5 flex items-center"><div class="code-block w-full p-6"><div class="flex items-center gap-2 mb-4 border-b border-gray-700 pb-2"><div class="w-3 h-3 rounded-full bg-red-500"></div><div class="w-3 h-3 rounded-full bg-yellow-500"></div><div class="w-3 h-3 rounded-full bg-green-500"></div></div><pre class="code-font text-base leading-relaxed text-gray-200">mylist = [<span class="syntax-str">"apple"</span>, <span class="syntax-str">"banana"</span>]
+mylist.<span class="syntax-fn">append</span>(<span class="syntax-str">"orange"</span>)
+<span class="syntax-fn">print</span>(mylist)</pre></div></div>
+        </div>
+    </div>
+
+    <!-- ==========================================
+         SLIDE 16: Python Tuples
+    =========================================== -->
+    <div class="ppt-slide bg-gradient-to-br from-gray-900 via-gray-800 to-gray-900 flex flex-col relative">
+        <div class="decorative-square bg-python-yellow w-64 h-64 -top-20 right-20 rotate-45"></div>
+        <div class="relative z-10 flex justify-between items-center px-12 py-6 border-b border-gray-700/50">
+            <div class="flex items-center gap-3"><div class="bg-python-blue p-2 rounded"><i class="material-icons text-white">code</i></div><span class="text-xl font-bold text-white">PYTHON MASTERCLASS</span></div>
+            <div class="text-gray-400 font-mono">15 / 37</div>
+        </div>
+        <div class="relative z-10 flex-grow flex px-12 py-10 gap-8">
+            <div class="w-3/5 flex flex-col justify-center">
+                <span class="text-xs font-bold uppercase tracking-[0.2em] text-blue-400 mb-2">Collections</span>
+                <h2 class="text-5xl font-extrabold text-white mb-6">Python Tuples</h2>
+                <p class="text-gray-300 text-lg mb-8">Tuples are used to store multiple items in a single variable. A tuple is a collection which is ordered and unchangeable.</p>
+                <div class="bg-gray-800 bg-opacity-50 border-l-4 border-python-yellow p-5 rounded-r-lg"><h4 class="text-sm font-bold text-yellow-400 uppercase mb-2"><i class="material-icons text-sm">lightbulb</i> Pro Tip</h4><p class="text-gray-300 text-base">Tuples are written with round brackets (). They are faster than lists.</p></div>
+            </div>
+            <div class="w-2/5 flex items-center"><div class="code-block w-full p-6"><div class="flex items-center gap-2 mb-4 border-b border-gray-700 pb-2"><div class="w-3 h-3 rounded-full bg-red-500"></div><div class="w-3 h-3 rounded-full bg-yellow-500"></div><div class="w-3 h-3 rounded-full bg-green-500"></div></div><pre class="code-font text-base leading-relaxed text-gray-200">thistuple = (<span class="syntax-str">"apple"</span>, <span class="syntax-str">"banana"</span>)
+<span class="syntax-cmt"># thistuple[0] = "kiwi" # Error!</span></pre></div></div>
+        </div>
+    </div>
+
+    <!-- ==========================================
+         SLIDE 17: Python Sets
+    =========================================== -->
+    <div class="ppt-slide bg-gradient-to-br from-gray-900 via-gray-800 to-gray-900 flex flex-col relative">
+        <div class="decorative-square bg-python-blue w-96 h-96 bottom-20 left-20 -rotate-6"></div>
+        <div class="relative z-10 flex justify-between items-center px-12 py-6 border-b border-gray-700/50">
+            <div class="flex items-center gap-3"><div class="bg-python-blue p-2 rounded"><i class="material-icons text-white">code</i></div><span class="text-xl font-bold text-white">PYTHON MASTERCLASS</span></div>
+            <div class="text-gray-400 font-mono">16 / 37</div>
+        </div>
+        <div class="relative z-10 flex-grow flex px-12 py-10 gap-8">
+            <div class="w-3/5 flex flex-col justify-center">
+                <span class="text-xs font-bold uppercase tracking-[0.2em] text-blue-400 mb-2">Collections</span>
+                <h2 class="text-5xl font-extrabold text-white mb-6">Python Sets</h2>
+                <p class="text-gray-300 text-lg mb-8">Sets are used to store multiple items in a single variable. Sets are unordered, unchangeable, and unindexed. No duplicates.</p>
+                <div class="bg-gray-800 bg-opacity-50 border-l-4 border-python-yellow p-5 rounded-r-lg"><h4 class="text-sm font-bold text-yellow-400 uppercase mb-2"><i class="material-icons text-sm">lightbulb</i> Pro Tip</h4><p class="text-gray-300 text-base">Use sets to remove duplicate items from a list quickly: set(mylist).</p></div>
+            </div>
+            <div class="w-2/5 flex items-center"><div class="code-block w-full p-6"><div class="flex items-center gap-2 mb-4 border-b border-gray-700 pb-2"><div class="w-3 h-3 rounded-full bg-red-500"></div><div class="w-3 h-3 rounded-full bg-yellow-500"></div><div class="w-3 h-3 rounded-full bg-green-500"></div></div><pre class="code-font text-base leading-relaxed text-gray-200">thisset = {<span class="syntax-str">"apple"</span>, <span class="syntax-str">"banana"</span>}
+thisset.<span class="syntax-fn">add</span>(<span class="syntax-str">"orange"</span>)</pre></div></div>
+        </div>
+    </div>
+
+    <!-- ==========================================
+         SLIDE 18: Python Dictionaries
+    =========================================== -->
+    <div class="ppt-slide bg-gradient-to-br from-gray-900 via-gray-800 to-gray-900 flex flex-col relative">
+        <div class="decorative-square bg-python-yellow w-80 h-80 -top-20 -left-20 rotate-12"></div>
+        <div class="relative z-10 flex justify-between items-center px-12 py-6 border-b border-gray-700/50">
+            <div class="flex items-center gap-3"><div class="bg-python-blue p-2 rounded"><i class="material-icons text-white">code</i></div><span class="text-xl font-bold text-white">PYTHON MASTERCLASS</span></div>
+            <div class="text-gray-400 font-mono">17 / 37</div>
+        </div>
+        <div class="relative z-10 flex-grow flex px-12 py-10 gap-8">
+            <div class="w-3/5 flex flex-col justify-center">
+                <span class="text-xs font-bold uppercase tracking-[0.2em] text-blue-400 mb-2">Collections</span>
+                <h2 class="text-5xl font-extrabold text-white mb-6">Python Dictionaries</h2>
+                <p class="text-gray-300 text-lg mb-8">Dictionaries are used to store data values in key:value pairs. They are ordered, changeable and do not allow duplicates.</p>
+                <div class="bg-gray-800 bg-opacity-50 border-l-4 border-python-yellow p-5 rounded-r-lg"><h4 class="text-sm font-bold text-yellow-400 uppercase mb-2"><i class="material-icons text-sm">lightbulb</i> Pro Tip</h4><p class="text-gray-300 text-base">Dictionary keys must be immutable types (strings, numbers, or tuples).</p></div>
+            </div>
+            <div class="w-2/5 flex items-center"><div class="code-block w-full p-6"><div class="flex items-center gap-2 mb-4 border-b border-gray-700 pb-2"><div class="w-3 h-3 rounded-full bg-red-500"></div><div class="w-3 h-3 rounded-full bg-yellow-500"></div><div class="w-3 h-3 rounded-full bg-green-500"></div></div><pre class="code-font text-base leading-relaxed text-gray-200">thisdict = {
+  <span class="syntax-str">"brand"</span>: <span class="syntax-str">"Ford"</span>,
+  <span class="syntax-str">"model"</span>: <span class="syntax-str">"Mustang"</span>
+}
+<span class="syntax-fn">print</span>(thisdict[<span class="syntax-str">"brand"</span>])</pre></div></div>
+        </div>
+    </div>
+
+    <!-- ==========================================
+         SLIDE 19: Python If...Else
+    =========================================== -->
+    <div class="ppt-slide bg-gradient-to-br from-gray-900 via-gray-800 to-gray-900 flex flex-col relative">
+        <div class="decorative-square bg-python-blue w-72 h-72 bottom-20 right-20 -rotate-12"></div>
+        <div class="relative z-10 flex justify-between items-center px-12 py-6 border-b border-gray-700/50">
+            <div class="flex items-center gap-3"><div class="bg-python-blue p-2 rounded"><i class="material-icons text-white">code</i></div><span class="text-xl font-bold text-white">PYTHON MASTERCLASS</span></div>
+            <div class="text-gray-400 font-mono">18 / 37</div>
+        </div>
+        <div class="relative z-10 flex-grow flex px-12 py-10 gap-8">
+            <div class="w-3/5 flex flex-col justify-center">
+                <span class="text-xs font-bold uppercase tracking-[0.2em] text-blue-400 mb-2">Control Flow</span>
+                <h2 class="text-5xl font-extrabold text-white mb-6">Python If...Else</h2>
+                <p class="text-gray-300 text-lg mb-8">Python supports the usual logical conditions from mathematics. These conditions can be used in 'if statements' and loops.</p>
+                <div class="bg-gray-800 bg-opacity-50 border-l-4 border-python-yellow p-5 rounded-r-lg"><h4 class="text-sm font-bold text-yellow-400 uppercase mb-2"><i class="material-icons text-sm">lightbulb</i> Pro Tip</h4><p class="text-gray-300 text-base">Python relies on indentation (whitespace at the beginning of a line) to define scope.</p></div>
+            </div>
+            <div class="w-2/5 flex items-center"><div class="code-block w-full p-6"><div class="flex items-center gap-2 mb-4 border-b border-gray-700 pb-2"><div class="w-3 h-3 rounded-full bg-red-500"></div><div class="w-3 h-3 rounded-full bg-yellow-500"></div><div class="w-3 h-3 rounded-full bg-green-500"></div></div><pre class="code-font text-base leading-relaxed text-gray-200">a = <span class="num">33</span>
+b = <span class="num">200</span>
+<span class="syntax-kw">if</span> b > a:
+  <span class="syntax-fn">print</span>(<span class="syntax-str">"b is greater"</span>)</pre></div></div>
+        </div>
+    </div>
+
+    <!-- ==========================================
+         SLIDE 20: Python Match
+    =========================================== -->
+    <div class="ppt-slide bg-gradient-to-br from-gray-900 via-gray-800 to-gray-900 flex flex-col relative">
+        <div class="decorative-square bg-python-yellow w-64 h-64 top-20 left-20 rotate-3"></div>
+        <div class="relative z-10 flex justify-between items-center px-12 py-6 border-b border-gray-700/50">
+            <div class="flex items-center gap-3"><div class="bg-python-blue p-2 rounded"><i class="material-icons text-white">code</i></div><span class="text-xl font-bold text-white">PYTHON MASTERCLASS</span></div>
+            <div class="text-gray-400 font-mono">19 / 37</div>
+        </div>
+        <div class="relative z-10 flex-grow flex px-12 py-10 gap-8">
+            <div class="w-3/5 flex flex-col justify-center">
+                <span class="text-xs font-bold uppercase tracking-[0.2em] text-blue-400 mb-2">Control Flow</span>
+                <h2 class="text-5xl font-extrabold text-white mb-6">Python Match</h2>
+                <p class="text-gray-300 text-lg mb-8">Python 3.10 introduced the match...case statement, which provides structural pattern matching. Similar to switch/case.</p>
+                <div class="bg-gray-800 bg-opacity-50 border-l-4 border-python-yellow p-5 rounded-r-lg"><h4 class="text-sm font-bold text-yellow-400 uppercase mb-2"><i class="material-icons text-sm">lightbulb</i> Pro Tip</h4><p class="text-gray-300 text-base">Use match when you have many specific conditions to check against a single variable.</p></div>
+            </div>
+            <div class="w-2/5 flex items-center"><div class="code-block w-full p-6"><div class="flex items-center gap-2 mb-4 border-b border-gray-700 pb-2"><div class="w-3 h-3 rounded-full bg-red-500"></div><div class="w-3 h-3 rounded-full bg-yellow-500"></div><div class="w-3 h-3 rounded-full bg-green-500"></div></div><pre class="code-font text-base leading-relaxed text-gray-200">status = <span class="num">404</span>
+<span class="syntax-kw">match</span> status:
+    <span class="syntax-kw">case</span> <span class="num">200</span>: <span class="syntax-fn">print</span>(<span class="syntax-str">"OK"</span>)
+    <span class="syntax-kw">case</span> <span class="num">404</span>: <span class="syntax-fn">print</span>(<span class="syntax-str">"Not Found"</span>)</pre></div></div>
+        </div>
+    </div>
+
+    <!-- ==========================================
+         SLIDE 21: Python While Loops
+    =========================================== -->
+    <div class="ppt-slide bg-gradient-to-br from-gray-900 via-gray-800 to-gray-900 flex flex-col relative">
+        <div class="decorative-square bg-python-blue w-96 h-96 -bottom-20 right-10 rotate-12"></div>
+        <div class="relative z-10 flex justify-between items-center px-12 py-6 border-b border-gray-700/50">
+            <div class="flex items-center gap-3"><div class="bg-python-blue p-2 rounded"><i class="material-icons text-white">code</i></div><span class="text-xl font-bold text-white">PYTHON MASTERCLASS</span></div>
+            <div class="text-gray-400 font-mono">20 / 37</div>
+        </div>
+        <div class="relative z-10 flex-grow flex px-12 py-10 gap-8">
+            <div class="w-3/5 flex flex-col justify-center">
+                <span class="text-xs font-bold uppercase tracking-[0.2em] text-blue-400 mb-2">Loops</span>
+                <h2 class="text-5xl font-extrabold text-white mb-6">Python While Loops</h2>
+                <p class="text-gray-300 text-lg mb-8">With the while loop we can execute a set of statements as long as a condition is true.</p>
+                <div class="bg-gray-800 bg-opacity-50 border-l-4 border-python-yellow p-5 rounded-r-lg"><h4 class="text-sm font-bold text-yellow-400 uppercase mb-2"><i class="material-icons text-sm">lightbulb</i> Pro Tip</h4><p class="text-gray-300 text-base">Remember to increment the variable used in the condition, or the loop will never end.</p></div>
+            </div>
+            <div class="w-2/5 flex items-center"><div class="code-block w-full p-6"><div class="flex items-center gap-2 mb-4 border-b border-gray-700 pb-2"><div class="w-3 h-3 rounded-full bg-red-500"></div><div class="w-3 h-3 rounded-full bg-yellow-500"></div><div class="w-3 h-3 rounded-full bg-green-500"></div></div><pre class="code-font text-base leading-relaxed text-gray-200">i = <span class="num">1</span>
+<span class="syntax-kw">while</span> i < <span class="num">6</span>:
+  <span class="syntax-fn">print</span>(i)
+  i += <span class="num">1</span></pre></div></div>
+        </div>
+    </div>
+
+    <!-- ==========================================
+         SLIDE 22: Python For Loops
+    =========================================== -->
+    <div class="ppt-slide bg-gradient-to-br from-gray-900 via-gray-800 to-gray-900 flex flex-col relative">
+        <div class="decorative-square bg-python-yellow w-72 h-72 -top-20 left-40 -rotate-6"></div>
+        <div class="relative z-10 flex justify-between items-center px-12 py-6 border-b border-gray-700/50">
+            <div class="flex items-center gap-3"><div class="bg-python-blue p-2 rounded"><i class="material-icons text-white">code</i></div><span class="text-xl font-bold text-white">PYTHON MASTERCLASS</span></div>
+            <div class="text-gray-400 font-mono">21 / 37</div>
+        </div>
+        <div class="relative z-10 flex-grow flex px-12 py-10 gap-8">
+            <div class="w-3/5 flex flex-col justify-center">
+                <span class="text-xs font-bold uppercase tracking-[0.2em] text-blue-400 mb-2">Loops</span>
+                <h2 class="text-5xl font-extrabold text-white mb-6">Python For Loops</h2>
+                <p class="text-gray-300 text-lg mb-8">A for loop is used for iterating over a sequence (that is either a list, a tuple, a dictionary, a set, or a string).</p>
+                <div class="bg-gray-800 bg-opacity-50 border-l-4 border-python-yellow p-5 rounded-r-lg"><h4 class="text-sm font-bold text-yellow-400 uppercase mb-2"><i class="material-icons text-sm">lightbulb</i> Pro Tip</h4><p class="text-gray-300 text-base">The for loop does not require an indexing variable to set beforehand.</p></div>
+            </div>
+            <div class="w-2/5 flex items-center"><div class="code-block w-full p-6"><div class="flex items-center gap-2 mb-4 border-b border-gray-700 pb-2"><div class="w-3 h-3 rounded-full bg-red-500"></div><div class="w-3 h-3 rounded-full bg-yellow-500"></div><div class="w-3 h-3 rounded-full bg-green-500"></div></div><pre class="code-font text-base leading-relaxed text-gray-200"><span class="syntax-kw">for</span> x <span class="syntax-kw">in</span> [<span class="num">1</span>, <span class="num">2</span>, <span class="num">3</span>]:
+  <span class="syntax-fn">print</span>(x)</pre></div></div>
+        </div>
+    </div>
+
+    <!-- ==========================================
+         SLIDE 23: Python Functions
+    =========================================== -->
+    <div class="ppt-slide bg-gradient-to-br from-gray-900 via-gray-800 to-gray-900 flex flex-col relative">
+        <div class="decorative-square bg-python-blue w-96 h-96 bottom-20 -right-20 -rotate-12"></div>
+        <div class="relative z-10 flex justify-between items-center px-12 py-6 border-b border-gray-700/50">
+            <div class="flex items-center gap-3"><div class="bg-python-blue p-2 rounded"><i class="material-icons text-white">code</i></div><span class="text-xl font-bold text-white">PYTHON MASTERCLASS</span></div>
+            <div class="text-gray-400 font-mono">22 / 37</div>
+        </div>
+        <div class="relative z-10 flex-grow flex px-12 py-10 gap-8">
+            <div class="w-3/5 flex flex-col justify-center">
+                <span class="text-xs font-bold uppercase tracking-[0.2em] text-blue-400 mb-2">Functions</span>
+                <h2 class="text-5xl font-extrabold text-white mb-6">Python Functions</h2>
+                <p class="text-gray-300 text-lg mb-8">A function is a block of code which only runs when it is called. You can pass data, known as parameters, into a function.</p>
+                <div class="bg-gray-800 bg-opacity-50 border-l-4 border-python-yellow p-5 rounded-r-lg"><h4 class="text-sm font-bold text-yellow-400 uppercase mb-2"><i class="material-icons text-sm">lightbulb</i> Pro Tip</h4><p class="text-gray-300 text-base">Use the 'def' keyword to define a function. Follow the DRY principle (Don't Repeat Yourself).</p></div>
+            </div>
+            <div class="w-2/5 flex items-center"><div class="code-block w-full p-6"><div class="flex items-center gap-2 mb-4 border-b border-gray-700 pb-2"><div class="w-3 h-3 rounded-full bg-red-500"></div><div class="w-3 h-3 rounded-full bg-yellow-500"></div><div class="w-3 h-3 rounded-full bg-green-500"></div></div><pre class="code-font text-base leading-relaxed text-gray-200"><span class="syntax-kw">def</span> <span class="syntax-fn">my_func</span>(fname):
+  <span class="syntax-fn">print</span>(fname)
+<span class="syntax-fn">my_func</span>(<span class="syntax-str">"Emil"</span>)</pre></div></div>
+        </div>
+    </div>
+
+    <!-- ==========================================
+         SLIDE 24: Python Range
+    =========================================== -->
+    <div class="ppt-slide bg-gradient-to-br from-gray-900 via-gray-800 to-gray-900 flex flex-col relative">
+        <div class="decorative-square bg-python-yellow w-80 h-80 top-20 right-20 rotate-12"></div>
+        <div class="relative z-10 flex justify-between items-center px-12 py-6 border-b border-gray-700/50">
+            <div class="flex items-center gap-3"><div class="bg-python-blue p-2 rounded"><i class="material-icons text-white">code</i></div><span class="text-xl font-bold text-white">PYTHON MASTERCLASS</span></div>
+            <div class="text-gray-400 font-mono">23 / 37</div>
+        </div>
+        <div class="relative z-10 flex-grow flex px-12 py-10 gap-8">
+            <div class="w-3/5 flex flex-col justify-center">
+                <span class="text-xs font-bold uppercase tracking-[0.2em] text-blue-400 mb-2">Functions</span>
+                <h2 class="text-5xl font-extrabold text-white mb-6">Python Range</h2>
+                <p class="text-gray-300 text-lg mb-8">The range() function returns a sequence of numbers, starting from 0 by default, and increments by 1 (by default).</p>
+                <div class="bg-gray-800 bg-opacity-50 border-l-4 border-python-yellow p-5 rounded-r-lg"><h4 class="text-sm font-bold text-yellow-400 uppercase mb-2"><i class="material-icons text-sm">lightbulb</i> Pro Tip</h4><p class="text-gray-300 text-base">Use range(5) to get numbers 0 to 4. Use range(2, 6) to get 2 to 5.</p></div>
+            </div>
+            <div class="w-2/5 flex items-center"><div class="code-block w-full p-6"><div class="flex items-center gap-2 mb-4 border-b border-gray-700 pb-2"><div class="w-3 h-3 rounded-full bg-red-500"></div><div class="w-3 h-3 rounded-full bg-yellow-500"></div><div class="w-3 h-3 rounded-full bg-green-500"></div></div><pre class="code-font text-base leading-relaxed text-gray-200"><span class="syntax-kw">for</span> x <span class="syntax-kw">in</span> <span class="syntax-fn">range</span>(<span class="num">6</span>):
+  <span class="syntax-fn">print</span>(x) <span class="syntax-cmt"># 0 to 5</span></pre></div></div>
+        </div>
+    </div>
+
+    <!-- ==========================================
+         SLIDE 25: Python Arrays
+    =========================================== -->
+    <div class="ppt-slide bg-gradient-to-br from-gray-900 via-gray-800 to-gray-900 flex flex-col relative">
+        <div class="decorative-square bg-python-blue w-64 h-64 bottom-40 left-20 rotate-3"></div>
+        <div class="relative z-10 flex justify-between items-center px-12 py-6 border-b border-gray-700/50">
+            <div class="flex items-center gap-3"><div class="bg-python-blue p-2 rounded"><i class="material-icons text-white">code</i></div><span class="text-xl font-bold text-white">PYTHON MASTERCLASS</span></div>
+            <div class="text-gray-400 font-mono">24 / 37</div>
+        </div>
+        <div class="relative z-10 flex-grow flex px-12 py-10 gap-8">
+            <div class="w-3/5 flex flex-col justify-center">
+                <span class="text-xs font-bold uppercase tracking-[0.2em] text-blue-400 mb-2">Advanced</span>
+                <h2 class="text-5xl font-extrabold text-white mb-6">Python Arrays</h2>
+                <p class="text-gray-300 text-lg mb-8">Python does not have built-in support for Arrays, but Python Lists can be used instead. For efficient arrays of numeric data, use the 'array' module or NumPy.</p>
+                <div class="bg-gray-800 bg-opacity-50 border-l-4 border-python-yellow p-5 rounded-r-lg"><h4 class="text-sm font-bold text-yellow-400 uppercase mb-2"><i class="material-icons text-sm">lightbulb</i> Pro Tip</h4><p class="text-gray-300 text-base">Use the built-in array module if you need to ensure all items are of the same numeric type.</p></div>
+            </div>
+            <div class="w-2/5 flex items-center"><div class="code-block w-full p-6"><div class="flex items-center gap-2 mb-4 border-b border-gray-700 pb-2"><div class="w-3 h-3 rounded-full bg-red-500"></div><div class="w-3 h-3 rounded-full bg-yellow-500"></div><div class="w-3 h-3 rounded-full bg-green-500"></div></div><pre class="code-font text-base leading-relaxed text-gray-200"><span class="syntax-kw">import</span> array
+arr = array.array(<span class="syntax-str">'i'</span>, [<span class="num">1</span>, <span class="num">2</span>, <span class="num">3</span>])</pre></div></div>
+        </div>
+    </div>
+
+    <!-- ==========================================
+         SLIDE 26: Python Iterators
+    =========================================== -->
+    <div class="ppt-slide bg-gradient-to-br from-gray-900 via-gray-800 to-gray-900 flex flex-col relative">
+        <div class="decorative-square bg-python-yellow w-96 h-96 -top-20 -right-20 rotate-6"></div>
+        <div class="relative z-10 flex justify-between items-center px-12 py-6 border-b border-gray-700/50">
+            <div class="flex items-center gap-3"><div class="bg-python-blue p-2 rounded"><i class="material-icons text-white">code</i></div><span class="text-xl font-bold text-white">PYTHON MASTERCLASS</span></div>
+            <div class="text-gray-400 font-mono">25 / 37</div>
+        </div>
+        <div class="relative z-10 flex-grow flex px-12 py-10 gap-8">
+            <div class="w-3/5 flex flex-col justify-center">
+                <span class="text-xs font-bold uppercase tracking-[0.2em] text-blue-400 mb-2">Advanced</span>
+                <h2 class="text-5xl font-extrabold text-white mb-6">Python Iterators</h2>
+                <p class="text-gray-300 text-lg mb-8">An iterator is an object that contains a countable number of values. It implements the iterator protocol (__iter__ and __next__).</p>
+                <div class="bg-gray-800 bg-opacity-50 border-l-4 border-python-yellow p-5 rounded-r-lg"><h4 class="text-sm font-bold text-yellow-400 uppercase mb-2"><i class="material-icons text-sm">lightbulb</i> Pro Tip</h4><p class="text-gray-300 text-base">Lists, tuples, dictionaries, and sets are all iterable objects.</p></div>
+            </div>
+            <div class="w-2/5 flex items-center"><div class="code-block w-full p-6"><div class="flex items-center gap-2 mb-4 border-b border-gray-700 pb-2"><div class="w-3 h-3 rounded-full bg-red-500"></div><div class="w-3 h-3 rounded-full bg-yellow-500"></div><div class="w-3 h-3 rounded-full bg-green-500"></div></div><pre class="code-font text-base leading-relaxed text-gray-200">mytuple = (<span class="syntax-str">"apple"</span>, <span class="syntax-str">"banana"</span>)
+myit = <span class="syntax-fn">iter</span>(mytuple)
+<span class="syntax-fn">print</span>(<span class="syntax-fn">next</span>(myit))</pre></div></div>
+        </div>
+    </div>
+
+    <!-- ==========================================
+         SLIDE 27: Python Modules
+    =========================================== -->
+    <div class="ppt-slide bg-gradient-to-br from-gray-900 via-gray-800 to-gray-900 flex flex-col relative">
+        <div class="decorative-square bg-python-blue w-64 h-64 top-40 left-20 -rotate-12"></div>
+        <div class="relative z-10 flex justify-between items-center px-12 py-6 border-b border-gray-700/50">
+            <div class="flex items-center gap-3"><div class="bg-python-blue p-2 rounded"><i class="material-icons text-white">code</i></div><span class="text-xl font-bold text-white">PYTHON MASTERCLASS</span></div>
+            <div class="text-gray-400 font-mono">26 / 37</div>
+        </div>
+        <div class="relative z-10 flex-grow flex px-12 py-10 gap-8">
+            <div class="w-3/5 flex flex-col justify-center">
+                <span class="text-xs font-bold uppercase tracking-[0.2em] text-blue-400 mb-2">Modules</span>
+                <h2 class="text-5xl font-extrabold text-white mb-6">Python Modules</h2>
+                <p class="text-gray-300 text-lg mb-8">Consider a module to be the same as a code library. A file containing a set of functions you want to include in your application.</p>
+                <div class="bg-gray-800 bg-opacity-50 border-l-4 border-python-yellow p-5 rounded-r-lg"><h4 class="text-sm font-bold text-yellow-400 uppercase mb-2"><i class="material-icons text-sm">lightbulb</i> Pro Tip</h4><p class="text-gray-300 text-base">You can use 'as' to create an alias: import numpy as np.</p></div>
+            </div>
+            <div class="w-2/5 flex items-center"><div class="code-block w-full p-6"><div class="flex items-center gap-2 mb-4 border-b border-gray-700 pb-2"><div class="w-3 h-3 rounded-full bg-red-500"></div><div class="w-3 h-3 rounded-full bg-yellow-500"></div><div class="w-3 h-3 rounded-full bg-green-500"></div></div><pre class="code-font text-base leading-relaxed text-gray-200"><span class="syntax-kw">import</span> mymodule
+mymodule.<span class="syntax-fn">greeting</span>(<span class="syntax-str">"Jonathan"</span>)</pre></div></div>
+        </div>
+    </div>
+
+    <!-- ==========================================
+         SLIDE 28: Python Dates
+    =========================================== -->
+    <div class="ppt-slide bg-gradient-to-br from-gray-900 via-gray-800 to-gray-900 flex flex-col relative">
+        <div class="decorative-square bg-python-yellow w-80 h-80 bottom-20 right-40 rotate-3"></div>
+        <div class="relative z-10 flex justify-between items-center px-12 py-6 border-b border-gray-700/50">
+            <div class="flex items-center gap-3"><div class="bg-python-blue p-2 rounded"><i class="material-icons text-white">code</i></div><span class="text-xl font-bold text-white">PYTHON MASTERCLASS</span></div>
+            <div class="text-gray-400 font-mono">27 / 37</div>
+        </div>
+        <div class="relative z-10 flex-grow flex px-12 py-10 gap-8">
+            <div class="w-3/5 flex flex-col justify-center">
+                <span class="text-xs font-bold uppercase tracking-[0.2em] text-blue-400 mb-2">Utilities</span>
+                <h2 class="text-5xl font-extrabold text-white mb-6">Python Dates</h2>
+                <p class="text-gray-300 text-lg mb-8">A date in Python is not a data type of its own, but we can import a module named datetime to work with dates as date objects.</p>
+                <div class="bg-gray-800 bg-opacity-50 border-l-4 border-python-yellow p-5 rounded-r-lg"><h4 class="text-sm font-bold text-yellow-400 uppercase mb-2"><i class="material-icons text-sm">lightbulb</i> Pro Tip</h4><p class="text-gray-300 text-base">The datetime module has many methods for handling dates and times, like strftime for formatting.</p></div>
+            </div>
+            <div class="w-2/5 flex items-center"><div class="code-block w-full p-6"><div class="flex items-center gap-2 mb-4 border-b border-gray-700 pb-2"><div class="w-3 h-3 rounded-full bg-red-500"></div><div class="w-3 h-3 rounded-full bg-yellow-500"></div><div class="w-3 h-3 rounded-full bg-green-500"></div></div><pre class="code-font text-base leading-relaxed text-gray-200"><span class="syntax-kw">import</span> datetime
+x = datetime.datetime.<span class="syntax-fn">now</span>()
+<span class="syntax-fn">print</span>(x.year)</pre></div></div>
+        </div>
+    </div>
+
+    <!-- ==========================================
+         SLIDE 29: Python Math
+    =========================================== -->
+    <div class="ppt-slide bg-gradient-to-br from-gray-900 via-gray-800 to-gray-900 flex flex-col relative">
+        <div class="decorative-square bg-python-blue w-72 h-72 top-20 -left-20 rotate-6"></div>
+        <div class="relative z-10 flex justify-between items-center px-12 py-6 border-b border-gray-700/50">
+            <div class="flex items-center gap-3"><div class="bg-python-blue p-2 rounded"><i class="material-icons text-white">code</i></div><span class="text-xl font-bold text-white">PYTHON MASTERCLASS</span></div>
+            <div class="text-gray-400 font-mono">28 / 37</div>
+        </div>
+        <div class="relative z-10 flex-grow flex px-12 py-10 gap-8">
+            <div class="w-3/5 flex flex-col justify-center">
+                <span class="text-xs font-bold uppercase tracking-[0.2em] text-blue-400 mb-2">Utilities</span>
+                <h2 class="text-5xl font-extrabold text-white mb-6">Python Math</h2>
+                <p class="text-gray-300 text-lg mb-8">Python has a set of built-in math functions, including an extensive math module, that allows you to perform mathematical tasks on numbers.</p>
+                <div class="bg-gray-800 bg-opacity-50 border-l-4 border-python-yellow p-5 rounded-r-lg"><h4 class="text-sm font-bold text-yellow-400 uppercase mb-2"><i class="material-icons text-sm">lightbulb</i> Pro Tip</h4><p class="text-gray-300 text-base">The min() and max() functions can find the minimum or maximum value in an iterable.</p></div>
+            </div>
+            <div class="w-2/5 flex items-center"><div class="code-block w-full p-6"><div class="flex items-center gap-2 mb-4 border-b border-gray-700 pb-2"><div class="w-3 h-3 rounded-full bg-red-500"></div><div class="w-3 h-3 rounded-full bg-yellow-500"></div><div class="w-3 h-3 rounded-full bg-green-500"></div></div><pre class="code-font text-base leading-relaxed text-gray-200"><span class="syntax-kw">import</span> math
+x = math.<span class="syntax-fn">sqrt</span>(<span class="num">64</span>)
+<span class="syntax-fn">print</span>(x)</pre></div></div>
+        </div>
+    </div>
+
+    <!-- ==========================================
+         SLIDE 30: Python JSON
+    =========================================== -->
+    <div class="ppt-slide bg-gradient-to-br from-gray-900 via-gray-800 to-gray-900 flex flex-col relative">
+        <div class="decorative-square bg-python-yellow w-96 h-96 bottom-20 left-40 -rotate-12"></div>
+        <div class="relative z-10 flex justify-between items-center px-12 py-6 border-b border-gray-700/50">
+            <div class="flex items-center gap-3"><div class="bg-python-blue p-2 rounded"><i class="material-icons text-white">code</i></div><span class="text-xl font-bold text-white">PYTHON MASTERCLASS</span></div>
+            <div class="text-gray-400 font-mono">29 / 37</div>
+        </div>
+        <div class="relative z-10 flex-grow flex px-12 py-10 gap-8">
+            <div class="w-3/5 flex flex-col justify-center">
+                <span class="text-xs font-bold uppercase tracking-[0.2em] text-blue-400 mb-2">Data Handling</span>
+                <h2 class="text-5xl font-extrabold text-white mb-6">Python JSON</h2>
+                <p class="text-gray-300 text-lg mb-8">JSON is a syntax for storing and exchanging data. Python has a built-in package called json, which can be used to work with JSON data.</p>
+                <div class="bg-gray-800 bg-opacity-50 border-l-4 border-python-yellow p-5 rounded-r-lg"><h4 class="text-sm font-bold text-yellow-400 uppercase mb-2"><i class="material-icons text-sm">lightbulb</i> Pro Tip</h4><p class="text-gray-300 text-base">Use json.loads() to parse JSON string into Python Object, and json.dumps() for the reverse.</p></div>
+            </div>
+            <div class="w-2/5 flex items-center"><div class="code-block w-full p-6"><div class="flex items-center gap-2 mb-4 border-b border-gray-700 pb-2"><div class="w-3 h-3 rounded-full bg-red-500"></div><div class="w-3 h-3 rounded-full bg-yellow-500"></div><div class="w-3 h-3 rounded-full bg-green-500"></div></div><pre class="code-font text-base leading-relaxed text-gray-200"><span class="syntax-kw">import</span> json
+x =  '{ "name":"John" }'
+y = json.<span class="syntax-fn">loads</span>(x)</pre></div></div>
+        </div>
+    </div>
+
+    <!-- ==========================================
+         SLIDE 31: Python RegEx
+    =========================================== -->
+    <div class="ppt-slide bg-gradient-to-br from-gray-900 via-gray-800 to-gray-900 flex flex-col relative">
+        <div class="decorative-square bg-python-blue w-64 h-64 top-20 right-40 rotate-12"></div>
+        <div class="relative z-10 flex justify-between items-center px-12 py-6 border-b border-gray-700/50">
+            <div class="flex items-center gap-3"><div class="bg-python-blue p-2 rounded"><i class="material-icons text-white">code</i></div><span class="text-xl font-bold text-white">PYTHON MASTERCLASS</span></div>
+            <div class="text-gray-400 font-mono">30 / 37</div>
+        </div>
+        <div class="relative z-10 flex-grow flex px-12 py-10 gap-8">
+            <div class="w-3/5 flex flex-col justify-center">
+                <span class="text-xs font-bold uppercase tracking-[0.2em] text-blue-400 mb-2">Data Handling</span>
+                <h2 class="text-5xl font-extrabold text-white mb-6">Python RegEx</h2>
+                <p class="text-gray-300 text-lg mb-8">A RegEx, or Regular Expression, is a sequence of characters that forms a search pattern. RegEx can be used to check if a string contains the specified search pattern.</p>
+                <div class="bg-gray-800 bg-opacity-50 border-l-4 border-python-yellow p-5 rounded-r-lg"><h4 class="text-sm font-bold text-yellow-400 uppercase mb-2"><i class="material-icons text-sm">lightbulb</i> Pro Tip</h4><p class="text-gray-300 text-base">Python provides the 're' module which supports regular expressions.</p></div>
+            </div>
+            <div class="w-2/5 flex items-center"><div class="code-block w-full p-6"><div class="flex items-center gap-2 mb-4 border-b border-gray-700 pb-2"><div class="w-3 h-3 rounded-full bg-red-500"></div><div class="w-3 h-3 rounded-full bg-yellow-500"></div><div class="w-3 h-3 rounded-full bg-green-500"></div></div><pre class="code-font text-base leading-relaxed text-gray-200"><span class="syntax-kw">import</span> re
+txt = <span class="syntax-str">"The rain in Spain"</span>
+x = re.<span class="syntax-fn">search</span>(<span class="syntax-str">"^The.*Spain$"</span>, txt)</pre></div></div>
+        </div>
+    </div>
+
+    <!-- ==========================================
+         SLIDE 32: Python PIP
+    =========================================== -->
+    <div class="ppt-slide bg-gradient-to-br from-gray-900 via-gray-800 to-gray-900 flex flex-col relative">
+        <div class="decorative-square bg-python-yellow w-96 h-96 -bottom-32 -right-20 rotate-3"></div>
+        <div class="relative z-10 flex justify-between items-center px-12 py-6 border-b border-gray-700/50">
+            <div class="flex items-center gap-3"><div class="bg-python-blue p-2 rounded"><i class="material-icons text-white">code</i></div><span class="text-xl font-bold text-white">PYTHON MASTERCLASS</span></div>
+            <div class="text-gray-400 font-mono">31 / 37</div>
+        </div>
+        <div class="relative z-10 flex-grow flex px-12 py-10 gap-8">
+            <div class="w-3/5 flex flex-col justify-center">
+                <span class="text-xs font-bold uppercase tracking-[0.2em] text-blue-400 mb-2">Packaging</span>
+                <h2 class="text-5xl font-extrabold text-white mb-6">Python PIP</h2>
+                <p class="text-gray-300 text-lg mb-8">PIP is a package manager for Python packages. You can use pip to install various packages from the Python Package Index (PyPI).</p>
+                <div class="bg-gray-800 bg-opacity-50 border-l-4 border-python-yellow p-5 rounded-r-lg"><h4 class="text-sm font-bold text-yellow-400 uppercase mb-2"><i class="material-icons text-sm">lightbulb</i> Pro Tip</h4><p class="text-gray-300 text-base">Always create a virtual environment before installing packages for a specific project.</p></div>
+            </div>
+            <div class="w-2/5 flex items-center"><div class="code-block w-full p-6"><div class="flex items-center gap-2 mb-4 border-b border-gray-700 pb-2"><div class="w-3 h-3 rounded-full bg-red-500"></div><div class="w-3 h-3 rounded-full bg-yellow-500"></div><div class="w-3 h-3 rounded-full bg-green-500"></div></div><pre class="code-font text-base leading-relaxed text-gray-200"><span class="syntax-cmt"># Install a package</span>
+pip install pandas
+
+<span class="syntax-cmt"># List installed packages</span>
+pip list</pre></div></div>
+        </div>
+    </div>
+
+    <!-- ==========================================
+         SLIDE 33: Python Try...Except
+    =========================================== -->
+    <div class="ppt-slide bg-gradient-to-br from-gray-900 via-gray-800 to-gray-900 flex flex-col relative">
+        <div class="decorative-square bg-python-blue w-72 h-72 bottom-20 left-20 -rotate-6"></div>
+        <div class="relative z-10 flex justify-between items-center px-12 py-6 border-b border-gray-700/50">
+            <div class="flex items-center gap-3"><div class="bg-python-blue p-2 rounded"><i class="material-icons text-white">code</i></div><span class="text-xl font-bold text-white">PYTHON MASTERCLASS</span></div>
+            <div class="text-gray-400 font-mono">32 / 37</div>
+        </div>
+        <div class="relative z-10 flex-grow flex px-12 py-10 gap-8">
+            <div class="w-3/5 flex flex-col justify-center">
+                <span class="text-xs font-bold uppercase tracking-[0.2em] text-blue-400 mb-2">Error Handling</span>
+                <h2 class="text-5xl font-extrabold text-white mb-6">Python Try...Except</h2>
+                <p class="text-gray-300 text-lg mb-8">The try block lets you test a block of code for errors. The except block lets you handle the error.</p>
+                <div class="bg-gray-800 bg-opacity-50 border-l-4 border-python-yellow p-5 rounded-r-lg"><h4 class="text-sm font-bold text-yellow-400 uppercase mb-2"><i class="material-icons text-sm">lightbulb</i> Pro Tip</h4><p class="text-gray-300 text-base">You can use the 'else' keyword to define a block of code to be executed if no errors were raised.</p></div>
+            </div>
+            <div class="w-2/5 flex items-center"><div class="code-block w-full p-6"><div class="flex items-center gap-2 mb-4 border-b border-gray-700 pb-2"><div class="w-3 h-3 rounded-full bg-red-500"></div><div class="w-3 h-3 rounded-full bg-yellow-500"></div><div class="w-3 h-3 rounded-full bg-green-500"></div></div><pre class="code-font text-base leading-relaxed text-gray-200"><span class="syntax-kw">try</span>:
+  <span class="syntax-fn">print</span>(x)
+<span class="syntax-kw">except</span>:
+  <span class="syntax-fn">print</span>(<span class="syntax-str">"Exception occurred"</span>)</pre></div></div>
+        </div>
+    </div>
+
+    <!-- ==========================================
+         SLIDE 34: Python String Formatting
+    =========================================== -->
+    <div class="ppt-slide bg-gradient-to-br from-gray-900 via-gray-800 to-gray-900 flex flex-col relative">
+        <div class="decorative-square bg-python-yellow w-80 h-80 -top-20 -left-20 rotate-12"></div>
+        <div class="relative z-10 flex justify-between items-center px-12 py-6 border-b border-gray-700/50">
+            <div class="flex items-center gap-3"><div class="bg-python-blue p-2 rounded"><i class="material-icons text-white">code</i></div><span class="text-xl font-bold text-white">PYTHON MASTERCLASS</span></div>
+            <div class="text-gray-400 font-mono">33 / 37</div>
+        </div>
+        <div class="relative z-10 flex-grow flex px-12 py-10 gap-8">
+            <div class="w-3/5 flex flex-col justify-center">
+                <span class="text-xs font-bold uppercase tracking-[0.2em] text-blue-400 mb-2">Strings</span>
+                <h2 class="text-5xl font-extrabold text-white mb-6">Python String Formatting</h2>
+                <p class="text-gray-300 text-lg mb-8">To make sure a string will display as expected, we can format the result with f-strings (Python 3.6+).</p>
+                <div class="bg-gray-800 bg-opacity-50 border-l-4 border-python-yellow p-5 rounded-r-lg"><h4 class="text-sm font-bold text-yellow-400 uppercase mb-2"><i class="material-icons text-sm">lightbulb</i> Pro Tip</h4><p class="text-gray-300 text-base">F-strings are faster and more readable than % formatting or .format().</p></div>
+            </div>
+            <div class="w-2/5 flex items-center"><div class="code-block w-full p-6"><div class="flex items-center gap-2 mb-4 border-b border-gray-700 pb-2"><div class="w-3 h-3 rounded-full bg-red-500"></div><div class="w-3 h-3 rounded-full bg-yellow-500"></div><div class="w-3 h-3 rounded-full bg-green-500"></div></div><pre class="code-font text-base leading-relaxed text-gray-200">age = <span class="num">36</span>
+txt = f<span class="syntax-str">"My name is John, and I am {age}"</span>
+<span class="syntax-fn">print</span>(txt)</pre></div></div>
+        </div>
+    </div>
+
+    <!-- ==========================================
+         SLIDE 35: Python None
+    =========================================== -->
+    <div class="ppt-slide bg-gradient-to-br from-gray-900 via-gray-800 to-gray-900 flex flex-col relative">
+        <div class="decorative-square bg-python-blue w-96 h-96 top-40 -right-40 -rotate-12"></div>
+        <div class="relative z-10 flex justify-between items-center px-12 py-6 border-b border-gray-700/50">
+            <div class="flex items-center gap-3"><div class="bg-python-blue p-2 rounded"><i class="material-icons text-white">code</i></div><span class="text-xl font-bold text-white">PYTHON MASTERCLASS</span></div>
+            <div class="text-gray-400 font-mono">34 / 37</div>
+        </div>
+        <div class="relative z-10 flex-grow flex px-12 py-10 gap-8">
+            <div class="w-3/5 flex flex-col justify-center">
+                <span class="text-xs font-bold uppercase tracking-[0.2em] text-blue-400 mb-2">Data Types</span>
+                <h2 class="text-5xl font-extrabold text-white mb-6">Python None</h2>
+                <p class="text-gray-300 text-lg mb-8">In Python, None is a special constant that represents the absence of a value or a null value. It is an object of its own datatype, the NoneType.</p>
+                <div class="bg-gray-800 bg-opacity-50 border-l-4 border-python-yellow p-5 rounded-r-lg"><h4 class="text-sm font-bold text-yellow-400 uppercase mb-2"><i class="material-icons text-sm">lightbulb</i> Pro Tip</h4><p class="text-gray-300 text-base">None is not the same as False, 0, or an empty string. None is a data type of its own (NoneType).</p></div>
+            </div>
+            <div class="w-2/5 flex items-center"><div class="code-block w-full p-6"><div class="flex items-center gap-2 mb-4 border-b border-gray-700 pb-2"><div class="w-3 h-3 rounded-full bg-red-500"></div><div class="w-3 h-3 rounded-full bg-yellow-500"></div><div class="w-3 h-3 rounded-full bg-green-500"></div></div><pre class="code-font text-base leading-relaxed text-gray-200">x = <span class="syntax-kw">None</span>
+<span class="syntax-kw">if</span> x:
+  <span class="syntax-fn">print</span>(<span class="syntax-str">"Do something"</span>)
+<span class="syntax-kw">else</span>:
+  <span class="syntax-fn">print</span>(<span class="syntax-str">"x is None"</span>)</pre></div></div>
+        </div>
+    </div>
+
+    <!-- ==========================================
+         SLIDE 36: Python User Input
+    =========================================== -->
+    <div class="ppt-slide bg-gradient-to-br from-gray-900 via-gray-800 to-gray-900 flex flex-col relative">
+        <div class="decorative-square bg-python-yellow w-64 h-64 bottom-20 -left-20 rotate-3"></div>
+        <div class="relative z-10 flex justify-between items-center px-12 py-6 border-b border-gray-700/50">
+            <div class="flex items-center gap-3"><div class="bg-python-blue p-2 rounded"><i class="material-icons text-white">code</i></div><span class="text-xl font-bold text-white">PYTHON MASTERCLASS</span></div>
+            <div class="text-gray-400 font-mono">35 / 37</div>
+        </div>
+        <div class="relative z-10 flex-grow flex px-12 py-10 gap-8">
+            <div class="w-3/5 flex flex-col justify-center">
+                <span class="text-xs font-bold uppercase tracking-[0.2em] text-blue-400 mb-2">Input</span>
+                <h2 class="text-5xl font-extrabold text-white mb-6">Python User Input</h2>
+                <p class="text-gray-300 text-lg mb-8">Python allows for user input. This means we can ask the user for input. The program waits for input until the user presses Enter.</p>
+                <div class="bg-gray-800 bg-opacity-50 border-l-4 border-python-yellow p-5 rounded-r-lg"><h4 class="text-sm font-bold text-yellow-400 uppercase mb-2"><i class="material-icons text-sm">lightbulb</i> Pro Tip</h4><p class="text-gray-300 text-base">The input() function always returns a string, even if the user enters a number.</p></div>
+            </div>
+            <div class="w-2/5 flex items-center"><div class="code-block w-full p-6"><div class="flex items-center gap-2 mb-4 border-b border-gray-700 pb-2"><div class="w-3 h-3 rounded-full bg-red-500"></div><div class="w-3 h-3 rounded-full bg-yellow-500"></div><div class="w-3 h-3 rounded-full bg-green-500"></div></div><pre class="code-font text-base leading-relaxed text-gray-200">username = <span class="syntax-fn">input</span>(<span class="syntax-str">"Enter name: "</span>)
+<span class="syntax-fn">print</span>(<span class="syntax-str">"Username is: "</span> + username)</pre></div></div>
+        </div>
+    </div>
+
+    <!-- ==========================================
+         SLIDE 37: Python VirtualEnv
+    =========================================== -->
+    <div class="ppt-slide bg-gradient-to-br from-gray-900 via-gray-800 to-gray-900 flex flex-col relative">
+        <div class="decorative-square bg-python-blue w-96 h-96 -top-40 right-20 rotate-6"></div>
+        <div class="relative z-10 flex justify-between items-center px-12 py-6 border-b border-gray-700/50">
+            <div class="flex items-center gap-3"><div class="bg-python-blue p-2 rounded"><i class="material-icons text-white">code</i></div><span class="text-xl font-bold text-white">PYTHON MASTERCLASS</span></div>
+            <div class="text-gray-400 font-mono">36 / 37</div>
+        </div>
+        <div class="relative z-10 flex-grow flex px-12 py-10 gap-8">
+            <div class="w-3/5 flex flex-col justify-center">
+                <span class="text-xs font-bold uppercase tracking-[0.2em] text-blue-400 mb-2">Environment</span>
+                <h2 class="text-5xl font-extrabold text-white mb-6">Python VirtualEnv</h2>
+                <p class="text-gray-300 text-lg mb-8">A virtual environment is a tool that helps to keep dependencies required by different projects separate by creating isolated python virtual environments.</p>
+                <div class="bg-gray-800 bg-opacity-50 border-l-4 border-python-yellow p-5 rounded-r-lg"><h4 class="text-sm font-bold text-yellow-400 uppercase mb-2"><i class="material-icons text-sm">lightbulb</i> Pro Tip</h4><p class="text-gray-300 text-base">Never work without a venv. It prevents version conflicts between project dependencies.</p></div>
+            </div>
+            <div class="w-2/5 flex items-center"><div class="code-block w-full p-6"><div class="flex items-center gap-2 mb-4 border-b border-gray-700 pb-2"><div class="w-3 h-3 rounded-full bg-red-500"></div><div class="w-3 h-3 rounded-full bg-yellow-500"></div><div class="w-3 h-3 rounded-full bg-green-500"></div></div><pre class="code-font text-base leading-relaxed text-gray-200"><span class="syntax-cmt"># Create venv</span>
+python -m venv myenv
+
+<span class="syntax-cmt"># Activate (Windows)</span>
+myenv\Scripts\activate</pre></div></div>
+        </div>
+    </div>
+
+    <!-- ==========================================
+         SLIDE 38: END SLIDE
+    =========================================== -->
+    <div class="ppt-slide bg-gradient-to-br from-gray-900 via-gray-800 to-gray-900 flex items-center justify-center relative">
+        <div class="decorative-square bg-python-blue w-96 h-96 -top-20 -left-20 rotate-12"></div>
+        <div class="decorative-square bg-python-yellow w-72 h-72 bottom-20 right-40 -rotate-6"></div>
+        <div class="decorative-square bg-python-blue w-64 h-64 top-40 -right-16 rotate-3"></div>
+        
+        <div class="relative z-10 text-center px-20">
+            <i class="material-icons text-8xl python-yellow mb-8">check_circle</i>
+            <h1 class="text-[68px] font-bold leading-tight text-white mb-6">Thank You</h1>
+            
+            <div class="flex items-center justify-center mb-8">
+                <div class="w-24 h-1 bg-python-blue"></div>
+                <div class="w-8 h-1 bg-python-yellow mx-3"></div>
+                <div class="w-24 h-1 bg-python-blue"></div>
+            </div>
+            
+            <h2 class="text-2xl font-semibold text-gray-300 mb-12">
+                Start coding your future today!
+            </h2>
+            
+            <div class="code-snippet rounded-lg p-6 max-w-4xl mx-auto">
+                <code class="code-font text-xl text-gray-200">
+                    <span class="python-blue">import</span> <span class="python-yellow">future</span>
+                </code>
+            </div>
+        </div>
+    </div>
+
+
+     <!-- ==========================================
+         SLIDE 1: AUTHOR INTRO (NEW)
+    =========================================== -->
+    <div class="ppt-slide bg-gradient-to-br from-gray-900 via-gray-800 to-gray-900 flex items-center justify-center relative">
+        <!-- Decorative Background Elements -->
+        <div class="decorative-square bg-python-blue w-96 h-96 -top-20 -left-20 rotate-12"></div>
+        <div class="decorative-square bg-python-yellow w-72 h-72 bottom-20 right-40 -rotate-6"></div>
+        <div class="decorative-square bg-python-blue w-64 h-64 top-40 -right-16 rotate-3"></div>
+        <div class="decorative-square bg-python-yellow w-48 h-48 bottom-32 left-32 -rotate-12"></div>
+        
+        <div class="relative z-10 text-center px-20">
+            <!-- Avatar Circle with Initials -->
+            <div class="flex justify-center mb-8">
+                <div class="w-40 h-40 rounded-full bg-gradient-to-tr from-blue-600 to-yellow-500 flex items-center justify-center text-6xl font-bold text-white border-4 border-gray-800 shadow-2xl">
+                    MA
+                </div>
+            </div>
+
+            <h1 class="text-5xl font-bold text-white mb-2">Ahmad Raza</h1>
+            <h2 class="text-xl font-semibold text-blue-400 mb-12 tracking-widest uppercase">AI | ML | RPA</h2>
+            
+            <!-- Decorative Line -->
+            <div class="flex items-center justify-center mb-12">
+                <div class="w-24 h-1 bg-python-blue"></div>
+                <div class="w-8 h-1 bg-python-yellow mx-3"></div>
+                <div class="w-24 h-1 bg-python-blue"></div>
+            </div>
+            
+            <!-- Contact Details Grid -->
+            <div class="grid grid-cols-2 gap-6 max-w-4xl mx-auto text-left">
+                <!-- <div class="flex items-center gap-4 p-4 bg-gray-800 bg-opacity-50 rounded-lg border border-gray-700 hover:border-python-blue transition-colors">
+                    <i class="material-icons text-3xl python-blue">portfolio</i>
+                    <div>
+                        <p class="text-xs text-gray-400 uppercase">portfolio</p>
+                        <p class="text-lg text-white font-semibold">....</p>
+                    </div>
+                </div> -->
+                <div class="flex items-center gap-4 p-4 bg-gray-800 bg-opacity-50 rounded-lg border border-gray-700 hover:border-python-blue transition-colors">
+                    <i class="material-icons text-3xl python-blue">email</i>
+                    <div>
+                        <p class="text-xs text-gray-400 uppercase">Email</p>
+                        <p class="text-lg text-white font-semibold">rjaahmad60@gmail.com</p>
+                    </div>
+                </div>
+                <div class="flex items-center gap-4 p-4 bg-gray-800 bg-opacity-50 rounded-lg border border-gray-700 hover:border-python-yellow transition-colors">
+                    <i class="material-icons text-3xl python-yellow">business</i>
+                    <div>
+                        <p class="text-xs text-gray-400 uppercase"><a href="https://linkedin.com/in/Ahmad10Raza">LinkedIn</a></p>
+                        <p class="text-base text-white font-mono"><a href="https://linkedin.com/in/Ahmad10Raza">linkedin.com/in/Ahmad10Raza</a></p>
+                    </div>
+                </div>
+                <div class="flex items-center gap-4 p-4 bg-gray-800 bg-opacity-50 rounded-lg border border-gray-700 hover:border-python-yellow transition-colors">
+                    <i class="material-icons text-3xl python-yellow">code</i>
+                    <div>
+                        <p class="text-xs text-gray-400 uppercase"><a href="https://github.com/Ahmad10Raza">GitHub</a></p>
+                        <p class="text-base text-white font-mono"><a href="https://github.com/Ahmad10Raza">github.com/Ahmad10Raza</a></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+</body>
+</html>

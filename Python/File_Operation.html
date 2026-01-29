@@ -1,0 +1,422 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Python File Handling Mastery | Ahmad Raza</title>
+    <style>
+        /* =========================================
+           SINGLE CSS FORMAT (MASTER STYLESHEET)
+           ========================================= */
+        :root {
+            /* Python Theme */
+            --py-blue: #306998;
+            --py-blue-light: #4B8BBE;
+            --py-yellow: #FFD43B;
+            
+            /* UI Colors */
+            --bg-body: #0f1115;
+            --bg-slide: #161b22;
+            --bg-code: #0d1117;
+            --bg-card: #21262d;
+            
+            --text-main: #c9d1d9;
+            --text-muted: #8b949e;
+            --text-white: #ffffff;
+            
+            --border-color: #30363d;
+            
+            /* Syntax Highlighting */
+            --code-keyword: #ff7b72; 
+            --code-func: #d2a8ff;    
+            --code-string: #a5d6ff; 
+            --code-comment: #8b949e;
+            --code-number: #79c0ff; 
+            --code-operator: #ff7b72;
+        }
+
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+
+        body {
+            font-family: 'Segoe UI', -apple-system, BlinkMacSystemFont, Roboto, sans-serif;
+            background-color: var(--bg-body);
+            color: var(--text-main);
+            line-height: 1.6;
+            scroll-behavior: smooth;
+        }
+
+        /* Typography */
+        h1, h2, h3 { color: var(--text-white); margin-bottom: 0.8rem; letter-spacing: -0.5px; }
+        h1 { font-size: 2.5rem; font-weight: 800; }
+        h2 { font-size: 2rem; color: var(--py-blue-light); border-bottom: 2px solid var(--border-color); padding-bottom: 10px; display: inline-block; }
+        h3 { font-size: 1.25rem; color: var(--py-yellow); margin-top: 15px; }
+        p { margin-bottom: 1rem; color: var(--text-muted); font-size: 0.95rem; }
+
+        /* Layout Utilities */
+        .container { max-width: 1200px; margin: 0 auto; padding: 40px 20px; }
+        .flex-center { display: flex; align-items: center; justify-content: center; }
+        .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 30px; }
+        
+        @media (max-width: 768px) {
+            .grid-2 { grid-template-columns: 1fr; }
+            h1 { font-size: 2rem; }
+            h2 { font-size: 1.5rem; }
+        }
+
+        /* =========================================
+           SLIDE COMPONENT
+           ========================================= */
+        .ppt-slide {
+            min-height: 100vh;
+            width: 100%;
+            background-color: var(--bg-slide);
+            border-bottom: 1px solid var(--border-color);
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .slide-header { margin-bottom: 30px; }
+        
+        .content-wrapper {
+            background: var(--bg-card);
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            padding: 30px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.2);
+        }
+
+        /* =========================================
+           CODE BLOCK STYLES
+           ========================================= */
+        .code-window {
+            background: var(--bg-code); border-radius: 8px; border: 1px solid var(--border-color);
+            overflow: hidden; margin-top: 15px;
+        }
+
+        .window-header {
+            background: #161b22; padding: 8px 15px; border-bottom: 1px solid var(--border-color);
+            display: flex; align-items: center; gap: 8px;
+        }
+
+        .dot { width: 10px; height: 10px; border-radius: 50%; }
+        .red { background: #ff5f56; } .yellow { background: #ffbd2e; } .green { background: #27c93f; }
+        .filename { font-size: 0.8rem; color: var(--text-muted); font-family: monospace; }
+
+        .code-content {
+            padding: 15px; overflow-x: auto; font-family: 'Consolas', 'Monaco', monospace;
+            font-size: 0.9rem; line-height: 1.5; color: var(--text-main);
+        }
+
+        .line { display: block; min-height: 1.5em; }
+        .line::before {
+            content: attr(data-line); display: inline-block; width: 2.5em;
+            padding-right: 1em; text-align: right; color: #484f58; user-select: none;
+        }
+
+        /* Syntax Classes */
+        .kw { color: var(--code-keyword); font-weight: bold; }
+        .fn { color: var(--code-func); }
+        .str { color: var(--code-string); }
+        .cmt { color: var(--code-comment); font-style: italic; }
+        .num { color: var(--code-number); }
+        .op { color: var(--code-operator); }
+
+        /* =========================================
+           UI ELEMENTS (Scenario, Tip)
+           ========================================= */
+        .scenario-box {
+            background: rgba(48, 105, 152, 0.15); border-left: 3px solid var(--py-blue);
+            padding: 15px; margin: 20px 0; border-radius: 0 6px 6px 0;
+        }
+        .scenario-title { color: var(--py-blue-light); font-weight: bold; font-size: 0.9rem; text-transform: uppercase; margin-bottom: 5px; display: flex; align-items: center; gap: 8px; }
+
+        .pro-tip {
+            background: rgba(255, 212, 59, 0.1); border: 1px solid var(--py-yellow);
+            padding: 15px; border-radius: 8px; margin-top: 20px; display: flex; gap: 12px;
+        }
+        .tip-icon {
+            background: var(--py-yellow); color: #000; width: 24px; height: 24px;
+            border-radius: 50%; display: flex; align-items: center; justify-content: center;
+            font-weight: bold; flex-shrink: 0; font-size: 0.8rem;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- ==========================================
+         SLIDE 1: FILE HANDLING & OPEN MODES
+    =========================================== -->
+    <div class="ppt-slide">
+        <div class="container">
+            <h2>Python File Handling: The `open()` Function</h2>
+            <div class="grid-2">
+                <div>
+                    <p>The key function for working with files in Python is the <code>open()</code> function. It takes two parameters: <strong>filename</strong> and <strong>mode</strong>.</p>
+                    <p>There are four main modes for opening a file:</p>
+                    <ul>
+                        <li><strong>"r"</strong> - Read (Default). Error if file doesn't exist.</li>
+                        <li><strong>"a"</strong> - Append. Creates file if it doesn't exist.</li>
+                        <li><strong>"w"</strong> - Write. Overwrites content; creates file if needed.</li>
+                        <li><strong>"x"</strong> - Create. Creates file; error if it exists.</li>
+                    </ul>
+                    <p>You can also specify <strong>"t"</strong> (Text - Default) or <strong>"b"</strong> (Binary - e.g., images).</p>
+                    
+                    <div class="scenario-box">
+                        <div class="scenario-title">Real-World Scenario</div>
+                        A logging system needs to open a file. It uses "a" (Append) to add new error logs without deleting old ones, or "w" to rotate the log file daily.
+                    </div>
+                </div>
+
+                <div class="code-window">
+                    <div class="window-header">
+                        <div class="dot red"></div><div class="dot yellow"></div><div class="dot green"></div>
+                        <span class="filename">modes.py</span>
+                    </div>
+                    <div class="code-content">
+                        <span class="line" data-line="1"><span class="cmt"># Syntax: open(filename, mode)</span></span>
+                        <span class="line" data-line="2"></span>
+                        <span class="line" data-line="3"><span class="cmt"># "r" - Read - Default value</span></span>
+                        <span class="line" data-line="4"><span class="cmt"># f = open("demofile.txt")</span></span>
+                        <span class="line" data-line="5"></span>
+                        <span class="line" data-line="6"><span class="cmt"># The code above is same as:</span></span>
+                        <span class="line" data-line="7"><span class="cmt"># "r" for read, "t" for text are defaults</span></span>
+                        <span class="line" data-line="8">f = <span class="kw">open</span>(<span class="str">"demofile.txt"</span>, <span class="str">"rt"</span>)</span>
+                        <span class="line" data-line="9"></span>
+                        <span class="line" data-line="10"><span class="cmt"># "b" - Binary mode (e.g. images)</span></span>
+                        <span class="line" data-line="11"><span class="cmt"># img = open("image.jpg", "rb")</span></span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ==========================================
+         SLIDE 2: OPENING & READING FILES
+    =========================================== -->
+    <div class="ppt-slide">
+        <div class="container">
+            <h2>Opening & Reading Files</h2>
+            <div class="grid-2">
+                <div class="code-window">
+                    <div class="window-header">
+                        <div class="dot red"></div><div class="dot yellow"></div><div class="dot green"></div>
+                        <span class="filename">reading.py</span>
+                    </div>
+                    <div class="code-content">
+                        <span class="line" data-line="1"><span class="cmt"># Open file located in same folder</span></span>
+                        <span class="line" data-line="2">f = <span class="kw">open</span>(<span class="str">"demofile.txt"</span>)</span>
+                        <span class="line" data-line="3"></span>
+                        <span class="line" data-line="4"><span class="cmt"># The open() function returns a file object</span></span>
+                        <span class="line" data-line="5"><span class="kw">print</span>(f.read())</span>
+                        <span class="line" data-line="6"></span>
+                        <span class="line" data-line="7"><span class="cmt"># Open file on a different location (Windows)</span></span>
+                        <span class="line" data-line="8">f = <span class="kw">open</span>(<span class="str">"D:\\myfiles\\welcome.txt"</span>)</span>
+                        <span class="line" data-line="9"><span class="kw">print</span>(f.read())</span>
+                    </div>
+                </div>
+                <div>
+                    <p>To open a file for reading, it is enough to specify the name of the file. The <code>open()</code> function returns a file object, which has a <code>read()</code> method for reading the content.</p>
+                    <p>If the file is in a different location, you must specify the file path. On Windows, you must use double backslashes <code>\\</code> to escape the path.</p>
+                    
+                    <div class="pro-tip">
+                        <div class="tip-icon">!</div>
+                        <div>
+                            <strong>Pro Tip:</strong> Make sure the file exists before opening in "r" mode, otherwise Python will raise a <code>FileNotFoundError</code>.
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ==========================================
+         SLIDE 3: CONTEXT MANAGERS & CLOSING
+    =========================================== -->
+    <div class="ppt-slide">
+        <div class="container">
+            <h2>The `with` Statement & Closing Files</h2>
+            <div class="grid-2">
+                <div>
+                    <p>It is good practice to always close the file when you are done with it. If not, changes may not show due to buffering.</p>
+                    <p>However, the best practice is to use the <code>with</code> statement. It automatically closes the file even if the script encounters an error.</p>
+                    
+                    <div class="scenario-box">
+                        <div class="scenario-title">Real-World Scenario</div>
+                        Processing a financial transaction file. If the script crashes halfway, the `with` statement ensures the file handle is released so other processes can access it.
+                    </div>
+                </div>
+
+                <div class="code-window">
+                    <div class="window-header">
+                        <div class="dot red"></div><div class="dot yellow"></div><div class="dot green"></div>
+                        <span class="filename">context.py</span>
+                    </div>
+                    <div class="code-content">
+                        <span class="line" data-line="1"><span class="cmt"># RECOMMENDED: Using 'with' statement</span></span>
+                        <span class="line" data-line="2"><span class="kw">with</span> <span class="kw">open</span>(<span class="str">"demofile.txt"</span>) <span class="kw">as</span> f:</span>
+                        <span class="line" data-line="3">    <span class="kw">print</span>(f.read())</span>
+                        <span class="line" data-line="4"><span class="cmt"># File closes automatically here</span></span>
+                        <span class="line" data-line="5"></span>
+                        <span class="line" data-line="6"><span class="cmt"># MANUAL: Close the file explicitly</span></span>
+                        <span class="line" data-line="7">f = <span class="kw">open</span>(<span class="str">"demofile.txt"</span>)</span>
+                        <span class="line" data-line="8"><span class="kw">print</span>(f.readline())</span>
+                        <span class="line" data-line="9">f.close() <span class="cmt"># Must remember to call this!</span></span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ==========================================
+         SLIDE 4: ADVANCED READING
+    =========================================== -->
+    <div class="ppt-slide">
+        <div class="container">
+            <h2>Reading Parts & Lines</h2>
+            <div class="grid-2">
+                <div class="code-window">
+                    <div class="window-header">
+                        <div class="dot red"></div><div class="dot yellow"></div><div class="dot green"></div>
+                        <span class="filename">read_advanced.py</span>
+                    </div>
+                    <div class="code-content">
+                        <span class="line" data-line="1"><span class="cmt"># Read only the first 5 characters</span></span>
+                        <span class="line" data-line="2"><span class="kw">with</span> <span class="kw">open</span>(<span class="str">"demofile.txt"</span>) <span class="kw">as</span> f:</span>
+                        <span class="line" data-line="3">    <span class="kw">print</span>(f.read(<span class="num">5</span>))</span>
+                        <span class="line" data-line="4"></span>
+                        <span class="line" data-line="5"><span class="cmt"># Read one line</span></span>
+                        <span class="line" data-line="6"><span class="kw">with</span> <span class="kw">open</span>(<span class="str">"demofile.txt"</span>) <span class="kw">as</span> f:</span>
+                        <span class="line" data-line="7">    <span class="kw">print</span>(f.readline())</span>
+                        <span class="line" data-line="8"></span>
+                        <span class="line" data-line="9"><span class="cmt"># Loop through the file line by line</span></span>
+                        <span class="line" data-line="10"><span class="kw">with</span> <span class="kw">open</span>(<span class="str">"demofile.txt"</span>) <span class="kw">as</span> f:</span>
+                        <span class="line" data-line="11">    <span class="kw">for</span> x <span class="kw">in</span> f:</span>
+                        <span class="line" data-line="12">        <span class="kw">print</span>(x)</span>
+                    </div>
+                </div>
+                <div>
+                    <p>By default, <code>read()</code> returns the whole text. You can specify how many characters to return (e.g., <code>read(5)</code>).</p>
+                    <p>You can return one line using <code>readline()</code>. To read the whole file efficiently without loading it all into memory at once, loop through the file object line by line.</p>
+                    
+                    <div class="pro-tip">
+                        <div class="tip-icon">!</div>
+                        <div>
+                            <strong>Pro Tip:</strong> Never use <code>read()</code> on a massive file (like 10GB) as it will crash your memory. Always loop line-by-line <code>for line in f:</code> for large files.
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ==========================================
+         SLIDE 5: WRITING TO FILES
+    =========================================== -->
+    <div class="ppt-slide">
+        <div class="container">
+            <h2>Writing to Existing Files</h2>
+            <div class="grid-2">
+                <div>
+                    <p>To write to an existing file, you must add a parameter to the <code>open()</code> function:</p>
+                    <ul>
+                        <li><strong>"a"</strong> - <em>Append</em>: Will append to the end of the file.</li>
+                        <li><strong>"w"</strong> - <em>Write</em>: Will overwrite any existing content.</li>
+                    </ul>
+                    
+                    <div class="scenario-box">
+                        <div class="scenario-title">Real-World Scenario</div>
+                        An "audit.log" uses "a" to keep a history of all events. A "config.json" uses "w" to save the current state, replacing the old state entirely.
+                    </div>
+                </div>
+
+                <div class="code-window">
+                    <div class="window-header">
+                        <div class="dot red"></div><div class="dot yellow"></div><div class="dot green"></div>
+                        <span class="filename">writing.py</span>
+                    </div>
+                    <div class="code-content">
+                        <span class="line" data-line="1"><span class="cmt"># Append to the end of the file</span></span>
+                        <span class="line" data-line="2"><span class="kw">with</span> <span class="kw">open</span>(<span class="str">"demofile.txt"</span>, <span class="str">"a"</span>) <span class="kw">as</span> f:</span>
+                        <span class="line" data-line="3">    f.write(<span class="str">"Now the file has more content!"</span>)</span>
+                        <span class="line" data-line="4"></span>
+                        <span class="line" data-line="5"><span class="cmt"># Overwrite the entire file</span></span>
+                        <span class="line" data-line="6"><span class="kw">with</span> <span class="kw">open</span>(<span class="str">"demofile.txt"</span>, <span class="str">"w"</span>) <span class="kw">as</span> f:</span>
+                        <span class="line" data-line="7">    f.write(<span class="str">"Woops! I have deleted the content!"</span>)</span>
+                        <span class="line" data-line="8"></span>
+                        <span class="line" data-line="9"><span class="cmt"># Open and read to verify</span></span>
+                        <span class="line" data-line="10"><span class="kw">with</span> <span class="kw">open</span>(<span class="str">"demofile.txt"</span>) <span class="kw">as</span> f:</span>
+                        <span class="line" data-line="11">    <span class="kw">print</span>(f.read())</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ==========================================
+         SLIDE 6: CREATING & DELETING FILES
+    =========================================== -->
+    <div class="ppt-slide">
+        <div class="container">
+            <h2>Create & Delete Files</h2>
+            <div class="grid-2">
+                <div class="code-window">
+                    <div class="window-header">
+                        <div class="dot red"></div><div class="dot yellow"></div><div class="dot green"></div>
+                        <span class="filename">os_ops.py</span>
+                    </div>
+                    <div class="code-content">
+                        <span class="line" data-line="1"><span class="cmt"># To create a new file, use open() with:</span></span>
+                        <span class="line" data-line="2"><span class="cmt"># "x" - Create (Error if exists)</span></span>
+                        <span class="line" data-line="3"><span class="cmt"># "w" or "a" - Creates if not exists</span></span>
+                        <span class="line" data-line="4">f = <span class="kw">open</span>(<span class="str">"myfile.txt"</span>, <span class="str">"x"</span>)</span>
+                        <span class="line" data-line="5"></span>
+                        <span class="line" data-line="6"><span class="cmt"># To delete a file, import OS module</span></span>
+                        <span class="line" data-line="7"><span class="kw">import</span> os</span>
+                        <span class="line" data-line="8"></span>
+                        <span class="line" data-line="9"><span class="cmt"># Check if file exists before deleting</span></span>
+                        <span class="line" data-line="10"><span class="kw">if</span> os.path.exists(<span class="str">"demofile.txt"</span>):</span>
+                        <span class="line" data-line="11">    os.remove(<span class="str">"demofile.txt"</span>)</span>
+                        <span class="line" data-line="12"><span class="kw">else</span>:</span>
+                        <span class="line" data-line="13">    <span class="kw">print</span>(<span class="str">"The file does not exist"</span>)</span>
+                        <span class="line" data-line="14"></span>
+                        <span class="line" data-line="15"><span class="cmt"># Remove an empty folder</span></span>
+                        <span class="line" data-line="16">os.rmdir(<span class="str">"myfolder"</span>)</span>
+                    </div>
+                </div>
+                <div>
+                    <p>To create a new file in Python, use the <code>open()</code> method with <code>"x"</code>, <code>"a"</code>, or <code>"w"</code>.</p>
+                    <p>To delete a file, you must import the <strong>OS</strong> module and run its <code>os.remove()</code> function. Always check if the file exists to avoid errors.</p>
+                    <p>To delete an entire folder, use <code>os.rmdir()</code>. Note that you can only remove <strong>empty</strong> folders.</p>
+                    
+                    <div class="pro-tip">
+                        <div class="tip-icon">!</div>
+                        <div>
+                            <strong>Pro Tip:</strong> <code>os.rmdir()</code> fails if the folder has files inside. To delete a non-empty folder, use the <code>shutil</code> module: <code>shutil.rmtree('folder_name')</code>.
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ==========================================
+         SLIDE 7: AUTHOR CLOSING
+    =========================================== -->
+    <div class="ppt-slide flex-center" style="text-align: center;">
+        <div class="container">
+            <h1>Master File Operations</h1>
+            <p>From reading logs to managing system directories, Python's `open()` function and `os` module are essential tools for any developer.</p>
+            <br>
+            <div style="display: inline-block; background: var(--bg-card); padding: 20px; border-radius: 12px; border: 1px solid var(--border-color);">
+                <h3 style="margin-top: 0; color: white;">Ahmad Raza</h3>
+                <p style="margin-bottom: 5px;">AI | ML | RPA</p>
+                <a href="https://linkedin.com/in/Ahmad10Raza" style="color: var(--py-blue-light); text-decoration: none; font-weight: bold;">Connect on LinkedIn</a><br>
+                <a href="https://github.com/Ahmad10Raza" style="color: var(--py-blue-light); text-decoration: none; font-weight: bold;">Follow On GitHub</a>
+            </div>
+        </div>
+    </div>
+
+</body>
+</html>
