@@ -1,0 +1,25 @@
+Subject: Application for Data Scientist Position – Mohd Ahmad Raza Ansari
+
+Email Body:
+
+Dear Hiring Manager,
+
+I hope you are doing well.
+
+I am writing to express my interest in the Data Scientist position at XYZ Company. I am a recent B.Tech graduate in Computer Science with hands-on experience in machine learning, automation, and full-stack development.
+
+Through internships at AventIQ AI and Doodle Health, I developed RPA bots, automated workflows, conducted competitive industry research, and contributed to real-world digital solutions. I’ve built and deployed end-to-end ML projects including a movie recommender system and a real-time ASL recognition system using CNNs, Flask, and MediaPipe.
+
+My technical toolkit includes Python, R, SQL, TensorFlow, PyTorch, Scikit-learn, Pandas, Power BI, MySQL, MongoDB, Docker, and cloud platforms like AWS and GCP. I am also proficient in Git, Linux, and DevOps pipelines (GitHub Actions, Jenkins).
+
+I’ve attached my resume and cover letter for your consideration. I would welcome the opportunity to discuss how my skills and enthusiasm for data science can contribute to XYZ Company’s success.
+
+Thank you for your time.
+
+Best regards,
+Mohd Ahmad Raza Ansari
+📞 6388623967
+✉️ [rjaahmad60@gmail.com](mailto:rjaahmad60@gmail.com)
+🔗 [LinkedIn](https://linkedin.com/in/Ahmad10Raza)
+💻 [GitHub](https://github.com/Ahmad10Raza)
+

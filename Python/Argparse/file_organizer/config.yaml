@@ -1,0 +1,27 @@
+# config.yaml
+
+file_types:
+
+  images:
+    - ".jpg"
+    - ".png"
+    - ".jpeg"
+    - ".gif"
+
+  documents:
+    - ".pdf"
+    - ".docx"
+    - ".txt"
+
+  scripts:
+    - ".py"
+    - ".js"
+    - ".sh"
+
+  audio:
+    - ".mp3"
+    - ".wav"
+
+  videos:
+    - ".mp4"
+    - ".mkv"
